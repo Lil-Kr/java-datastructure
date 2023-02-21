@@ -9,11 +9,24 @@
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>array</artifactId>
-    <name>array</name>
+    <groupId>com.cy.stackandqueue</groupId>
+    <artifactId>stackandqueue</artifactId>
+    <name>stackandqueue</name>
     <version>1.0.0</version>
 
     <dependencies>
+        <dependency>
+            <groupId>com.cy</groupId>
+            <artifactId>linkedlist</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.cy</groupId>
+            <artifactId>array</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -68,8 +81,8 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <!-- 指定该Main Class为全局的唯一入口 -->
-                    <mainClass>com.cy.linkedlist.LinkedListApplication</mainClass>
-                    <!--<layout>ZIP</layout>-->
+                    <mainClass>com.cy.stackandqueue.StackAndQueueApplication</mainClass>
+                    <!--common 不需要可执行jar-->
                     <skip>true</skip>
                 </configuration>
                 <executions>
@@ -83,5 +96,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
