@@ -16,6 +16,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>common</module>
         <module>array</module>
         <module>linkedlist</module>
         <module>stackandqueue</module>
