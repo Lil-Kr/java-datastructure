@@ -18,8 +18,10 @@
     <modules>
         <module>common</module>
         <module>array</module>
-        <module>linkedlist</module>
-        <module>stackandqueue</module>
+        <module>linked-list</module>
+        <module>stack-and-queue</module>
+        <module>binary-search-tree</module>
+        <module>set-and-map</module>
     </modules>
 
     <properties>
