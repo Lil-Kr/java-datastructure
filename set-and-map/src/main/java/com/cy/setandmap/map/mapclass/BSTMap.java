@@ -87,10 +87,13 @@ public class BSTMap<K extends Comparable<K>, V> implements MapService<K, V> {
             throw new IllegalArgumentException("BST is empty!");
         }
 
-        Node node = remove(root, key);
+        Node del = getNode(key);
+        if (del == null) {
+            throw new IllegalArgumentException(key + " doesn`t exist !");
+        }
 
-
-        return null;
+        root = remove(root, key);
+        return del.value;
     }
 
     private Node remove(Node node, K key) {
@@ -131,7 +134,6 @@ public class BSTMap<K extends Comparable<K>, V> implements MapService<K, V> {
                 return successor;
             }
         }
-
     }
 
     public K removeMin() {
@@ -159,7 +161,7 @@ public class BSTMap<K extends Comparable<K>, V> implements MapService<K, V> {
 
     public K getMin() {
         if (size == 0){
-            throw new IllegalArgumentException("BST is empty!");
+            throw new IllegalArgumentException("BSTMap is empty!");
         }
         return getMin(root).key;
     }
@@ -194,7 +196,7 @@ public class BSTMap<K extends Comparable<K>, V> implements MapService<K, V> {
 
         Queue<Node> q = new LinkedList<>();
         q.add(root);
-        while (!q.isEmpty()){
+        while (!q.isEmpty()) {
             Node cur = q.remove();
             if (cur.key.equals(key)) {
                 return cur;

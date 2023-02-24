@@ -22,6 +22,7 @@
         <module>stack-and-queue</module>
         <module>binary-search-tree</module>
         <module>set-and-map</module>
+        <module>hashtable</module>
     </modules>
 
     <properties>

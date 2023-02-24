@@ -7,7 +7,7 @@ import com.cy.setandmap.service.MapService;
  * @Date: 2023/2/24
  * @Description: 基于链表实现的Map
  */
-public class LinkedListMap<K, V> implements MapService<K, V> {
+public class LinkedListMap<K extends Comparable<K>, V> implements MapService<K, V> {
 
     private class Node {
         public K key;
@@ -47,7 +47,7 @@ public class LinkedListMap<K, V> implements MapService<K, V> {
     }
 
     /**
-     * 头插法
+     * 添加元素, 头插法
      * @param key
      * @param value
      */
@@ -63,8 +63,17 @@ public class LinkedListMap<K, V> implements MapService<K, V> {
         }
     }
 
+    /**
+     * 删除元素
+     * @param key
+     * @return
+     */
     @Override
     public V remove(K key) {
+        if (isEmpty()) {
+            throw new IllegalArgumentException("LinkedListMap is empty!");
+        }
+
         Node prev = dummyHead;
         while (prev.next != null) {
             if (prev.next.key.equals(key)){
@@ -79,9 +88,10 @@ public class LinkedListMap<K, V> implements MapService<K, V> {
             del.next = null;
             size--;
             return del.value;
+        }else {
+            return null;
         }
 
-        return null;
     }
 
     @Override
@@ -140,12 +150,9 @@ public class LinkedListMap<K, V> implements MapService<K, V> {
             prev = prev.next;
             res.append(prev.key + " -> " + prev.value + "\n");
         }
-
-
-
         return "LinkedListMap{" +
-                "linkedlistMap=" + res +
-                ", size=" + size +
+                " \nlinkedlistMap=\n" + res +
+                ", size= " + size +
                 '}';
     }
 }
