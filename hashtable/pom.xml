@@ -16,6 +16,12 @@
     <dependencies>
         <dependency>
             <groupId>com.cy</groupId>
+            <artifactId>common</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.cy</groupId>
             <artifactId>linked-list</artifactId>
             <version>1.0.0</version>
         </dependency>
