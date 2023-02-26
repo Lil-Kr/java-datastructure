@@ -146,6 +146,15 @@ public class Array<E> {
         return data[index];
     }
 
+    public void swap(int i, int j) {
+        if (i < 0 || j < 0 || i >= size || j >= size) {
+            throw new IllegalArgumentException("Index is illegal.");
+        }
+        E t = data[i];
+        data[i] = data[j];
+        data[j] = t;
+    }
+
     @Override
     public String toString() {
         return "Array{" +

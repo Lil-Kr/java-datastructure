@@ -23,6 +23,7 @@
         <module>binary-search-tree</module>
         <module>set-and-map</module>
         <module>hashtable</module>
+        <module>heap-and-priority-queue</module>
     </modules>
 
     <properties>
