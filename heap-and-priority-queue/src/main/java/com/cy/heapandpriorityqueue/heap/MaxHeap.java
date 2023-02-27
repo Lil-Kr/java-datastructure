@@ -1,7 +1,7 @@
-package com.cy.heap;
+package com.cy.heapandpriorityqueue.heap;
 
 import com.cy.array.arrayclass.Array;
-import com.cy.heap.service.HeapService;
+import com.cy.heapandpriorityqueue.service.HeapService;
 
 /**
  * @Author: Lil-K
@@ -14,6 +14,11 @@ public class MaxHeap<E extends Comparable<E>> implements HeapService<E> {
 
     public MaxHeap() {
         datas = new Array<>();
+    }
+
+    public MaxHeap(E[] arr) {
+        datas = new Array<>(arr);
+        heapify(datas);
     }
 
     public MaxHeap(int capacity) {
@@ -53,13 +58,6 @@ public class MaxHeap<E extends Comparable<E>> implements HeapService<E> {
     }
 
     @Override
-    public E get(int index) {
-        if (index < 0 || isEmpty()) {
-            throw new IllegalArgumentException("Can not find when heap is empty");
-        }
-        return datas.get(index);
-    }
-
     public E extractMax() {
         E ret = findMax();
         /**
@@ -72,8 +70,14 @@ public class MaxHeap<E extends Comparable<E>> implements HeapService<E> {
          * 此时最大堆的性质被破坏了, 需要维护堆的性质
          */
         siftDown(0);
-
         return ret;
+    }
+
+    private E get(int index) {
+        if (index < 0 || isEmpty()) {
+            throw new IllegalArgumentException("Can not find when heap is empty");
+        }
+        return datas.get(index);
     }
 
     /**
@@ -81,33 +85,12 @@ public class MaxHeap<E extends Comparable<E>> implements HeapService<E> {
      * @param k
      */
     private void siftDown(int k) {
-        /**
-         * 先计算出k的左右子节点的索引
-         */
-        while (k >= 0 && k >= datas.getSize()-1) {
-            int leftIndex = leftChildIndex(k);
-            int rightIndex = rightChildIndex(k);
-
-            /**
-             * 如果左子节点 >=右子节点 --> k 与左子节点进行交换位置
-             * 反之
-             */
-            if (datas.get(leftIndex).compareTo(datas.get(rightIndex)) >= 0) {
-                datas.swap(k, leftIndex);
-                k = leftIndex;
-            }else {
-                datas.swap(k, rightIndex);
-                k = rightIndex;
-            }
-        }
 
         while (leftChildIndex(k) < datas.getSize()){
             int j = leftChildIndex(k);
-//            int rightIndex = rightChildIndex(k);
 
             /**
              * 获取 k 这个位置的左右子节点中最大的那个节点的索引
-             *
              */
             if (j + 1 < datas.getSize()
                     && datas.get(j + 1).compareTo(datas.get(j)) > 0) {
@@ -129,34 +112,50 @@ public class MaxHeap<E extends Comparable<E>> implements HeapService<E> {
     }
 
     @Override
-    public E find(int index) {
+    public E findMax() {
+        return find(0);
+    }
+
+    private E find(int index) {
         if (index < 0 || isEmpty()) {
             throw new IllegalArgumentException("Can not find when heap is empty");
         }
         return datas.get(index);
     }
 
-    public E findMax() {
-        return this.find(0);
-    }
-
+    /**
+     * 替换堆顶元素
+     * @param e
+     * @return
+     */
     @Override
-    public boolean contains(int index) {
-        return false;
+    public E replace(E e) {
+        E ret = findMax();
+
+        // 堆顶替换成 e
+        datas.set(0, e);
+        siftDown(0);
+        return ret;
     }
 
+    /**
+     * 将数组整理为堆的结构
+     * @param array
+     */
     @Override
-    public boolean contains(E e) {
-        return false;
+    public void heapify(Array array) {
+        for (int i = parentIndex(array.getSize()-1); i >= 0; i--) {
+            siftDown(i);
+        }
     }
 
-    @Override
-    public void update(int index) {
+    public E[] getArray() {
+        Comparable[] arr = new Comparable[getSize()];
 
-    }
-
-    public E[] toArray() {
-        return datas.getArray();
+        for (int i = 0; i < datas.getSize(); i++) {
+            arr[i] = datas.get(i);
+        }
+        return (E[]) arr;
     }
 
     /**

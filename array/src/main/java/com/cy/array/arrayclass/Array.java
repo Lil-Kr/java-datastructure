@@ -28,6 +28,14 @@ public class Array<E> {
         this(DEFAULT_CAPACITY);
     }
 
+    public Array(E[] arr){
+        this.data = (E[]) new Object[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            data[i] = arr[i];
+        }
+        size = arr.length;
+    }
+
     public int getSize(){
         return size;
     }
@@ -144,6 +152,14 @@ public class Array<E> {
             throw new IllegalArgumentException("index is error or element was empty");
         }
         return data[index];
+    }
+
+    public void set(int index, E e) {
+        if (index < 0 || size <= 0) {
+            throw new IllegalArgumentException("index is error for Array set operation");
+        }
+
+        data[index] = e;
     }
 
     public void swap(int i, int j) {
