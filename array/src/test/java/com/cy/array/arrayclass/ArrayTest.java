@@ -90,7 +90,7 @@ class ArrayTest {
             array.addLast((Comparable)o);
         }
 
-        array.add(66,2);
+        array.add(2,66);
         List<Object> arr = Arrays.asList(array.getArray());
         List<Object> actualList = arr.stream()
                 .filter(Objects::nonNull)
@@ -116,7 +116,7 @@ class ArrayTest {
             array.addLast((Comparable)o);
         }
 
-        array.add(66,4);
+        array.add(4,66);
         List<Object> arr = Arrays.asList(array.getArray());
         List<Object> actualList = arr.stream()
                 .filter(Objects::nonNull)

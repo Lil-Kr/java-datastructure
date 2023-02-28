@@ -67,7 +67,7 @@ public class Array<E extends Comparable<E>> {
      * 向数组末尾添加元素
      * @param e
      */
-    public void add(E e, int index) {
+    public void add(int index, E e) {
         if (index < 0 || index > size + 2) {
             throw new IllegalArgumentException("add index was error");
         }
@@ -95,11 +95,11 @@ public class Array<E extends Comparable<E>> {
     }
 
     public void addFirst(E data) {
-        add(data, 0);
+        add( 0,data);
     }
 
     public void addLast(E data) {
-        add(data, size);
+        add(size,data);
     }
 
     public E remove(int index) {
@@ -117,10 +117,10 @@ public class Array<E extends Comparable<E>> {
             data[index] = null;
         }else {
             // 调整数组
-            for (int i = index; i < size; i++) {
+            for (int i = index; i < size-1; i++) {
                 data[i] = data[i + 1];
             }
-            data[size] = null;
+            data[size-1] = null;
         }
         size--;
 
@@ -172,7 +172,7 @@ public class Array<E extends Comparable<E>> {
     }
 
     public E[] toArray() {
-        E[] ret = (E[]) new Object[size];
+        E[] ret = (E[]) new Comparable[size];
 
         for (int i = 0; i < size; i++) {
             ret[i] = data[i];
