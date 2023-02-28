@@ -33,7 +33,7 @@ class MaxHeapTest {
     @Test
     public void add_success_1() {
         // 期望值
-        Integer[] except1 = {555};
+        Comparable[] except1 = {555};
 
         // 实际值
         maxHeap.add(555);
@@ -59,7 +59,7 @@ class MaxHeapTest {
     @Test
     public void add_success_2() {
         // 期望值 {3,22,1,0,4,70,54,21};
-        Integer[] except1 = arr;
+        Comparable[] except1 = arr;
 
         // 实际值
         maxHeap.add(3);
@@ -82,8 +82,8 @@ class MaxHeapTest {
     @Test
     void get_add_array_success_1() {
         // 期望值 {3,22,1,0,4,70,54,21};
-        Integer[] except1 = arr;
-        Integer[] except2 = new Integer[arr.length];
+        Comparable[] except1 = arr;
+        Comparable[] except2 = new Integer[arr.length];
         Boolean except3 = true;
 
         // 实际值
@@ -107,7 +107,7 @@ class MaxHeapTest {
         }
 
         for (int i = 0; i < except2.length-1; i++) {
-            if (except2[i] < except2[i+1]) {
+            if (except2[i].compareTo(except2[i+1]) < 0) {
                 except3 = false;
             }
         }

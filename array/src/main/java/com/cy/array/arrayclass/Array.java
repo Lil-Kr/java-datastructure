@@ -8,7 +8,7 @@ import com.alibaba.fastjson2.JSON;
  * @Description:
  */
 
-public class Array<E> {
+public class Array<E extends Comparable<E>> {
     private E[] data;
 
     private int size;
@@ -20,7 +20,7 @@ public class Array<E> {
      * @param capacity
      */
     public Array(int capacity) {
-        this.data = (E[]) new Object[capacity];
+        this.data = (E[]) new Comparable[capacity];
         this.size = 0;
     }
 
@@ -29,7 +29,7 @@ public class Array<E> {
     }
 
     public Array(E[] arr){
-        this.data = (E[]) new Object[arr.length];
+        this.data = (E[]) new Comparable[arr.length];
         for (int i = 0; i < arr.length; i++) {
             data[i] = arr[i];
         }
@@ -53,7 +53,7 @@ public class Array<E> {
     }
 
     private void resize(int newCapacity) {
-        E[] newData = (E[]) new Object[newCapacity];
+        E[] newData = (E[]) new Comparable[newCapacity];
         for (int i = 0; i < this.data.length; i++) {
             newData[i] = this.data[i];
         }
@@ -171,6 +171,15 @@ public class Array<E> {
         data[j] = t;
     }
 
+    public E[] toArray() {
+        E[] ret = (E[]) new Object[size];
+
+        for (int i = 0; i < size; i++) {
+            ret[i] = data[i];
+        }
+        return ret;
+    }
+
     @Override
     public String toString() {
         return "Array{" +
@@ -179,4 +188,5 @@ public class Array<E> {
                 ", capacity=" + getCapacity() +
                 '}';
     }
+
 }

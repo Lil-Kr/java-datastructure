@@ -3,8 +3,8 @@ package com.cy.array.arrayclass;
 import com.alibaba.fastjson2.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -16,22 +16,18 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @Slf4j
 class ArrayTest {
 
-    @BeforeAll
-    static void setup () {
-    }
-
     @Test
     void addLast() {
         Array array = new Array<>();
         List<Object> initList = Arrays.asList(1,22,4,34);
         for (Object o : initList) {
-            array.addLast(o);
+            array.addLast((Comparable) o);
         }
 
         List<Object> testAddList = Arrays.asList(100,44);
 
         for (Object o : testAddList) {
-            array.addLast(o);
+            array.addLast((Comparable) o);
         }
 
         // 期望值
@@ -60,12 +56,12 @@ class ArrayTest {
         expectList.addAll(initList);
 
         for (Object o : initList) {
-            array.addLast(o);
+            array.addLast((Comparable) o);
         }
 
         List<Object> addList = Arrays.asList(99, 54, 100, 33);
         for (Object o : addList) {
-            array.addFirst(o);
+            array.addFirst((Comparable) o);
         }
 
         // 实际值
@@ -91,7 +87,7 @@ class ArrayTest {
 
         // 实际值
         for (Object o : initList) {
-            array.addLast(o);
+            array.addLast((Comparable)o);
         }
 
         array.add(66,2);
@@ -117,7 +113,7 @@ class ArrayTest {
 
         // 实际值
         for (Object o : initList) {
-            array.addLast(o);
+            array.addLast((Comparable)o);
         }
 
         array.add(66,4);
@@ -140,7 +136,7 @@ class ArrayTest {
 
         // 实际值
         for (Object o : initList) {
-            array.addLast(o);
+            array.addLast((Comparable) o);
         }
 
         Object o = array.removeLast();
@@ -163,7 +159,7 @@ class ArrayTest {
 
         // 实际值
         for (Object o : initList) {
-            array.addLast(o);
+            array.addLast((Comparable) o);
         }
 
         Object o = array.removeFirst();

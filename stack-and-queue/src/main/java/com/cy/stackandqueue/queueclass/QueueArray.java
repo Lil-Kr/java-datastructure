@@ -7,7 +7,7 @@ import com.cy.array.arrayclass.Array;
  * @Date: 2023/2/22
  * @Description: 数组实现 队列, 具有局限性, 出队操作 O(n)
  */
-public class QueueArray<E> implements Queue<E> {
+public class QueueArray<E extends Comparable<E>> implements Queue<E> {
 
     private Array<E> array;
 

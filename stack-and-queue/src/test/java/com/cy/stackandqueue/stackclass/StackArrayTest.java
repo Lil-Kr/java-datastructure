@@ -10,8 +10,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @Slf4j
 class StackArrayTest {
 
@@ -21,7 +19,7 @@ class StackArrayTest {
         Object[] except1 = {1,2,3,4};
 
         // 实际值
-        StackArray<Object> stackArray = new StackArray<>();
+        StackArray<Integer> stackArray = new StackArray<>();
         stackArray.push(1);
         stackArray.push(2);
         stackArray.push(3);
@@ -42,7 +40,7 @@ class StackArrayTest {
         Object[] except1 = {1};
 
         // 实际值
-        StackArray<Object> stackArray = new StackArray<>();
+        StackArray<Integer> stackArray = new StackArray<>();
         stackArray.push(1);
         List<Object> actual1 = Arrays.asList(stackArray.getStackArray());
         actual1 = actual1.stream()
@@ -60,7 +58,7 @@ class StackArrayTest {
         Integer except1 = 4;
 
         // 实际值
-        StackArray<Object> stackArray = new StackArray<>();
+        StackArray<Integer> stackArray = new StackArray<>();
         stackArray.push(1);
         stackArray.push(2);
         stackArray.push(3);
@@ -76,7 +74,7 @@ class StackArrayTest {
         Integer except1 = 4;
 
         // 实际值
-        StackArray<Object> stackArray = new StackArray<>();
+        StackArray<Integer> stackArray = new StackArray<>();
         stackArray.push(1);
         stackArray.push(4);
         Integer actual1 = (Integer) stackArray.pop();
@@ -90,7 +88,7 @@ class StackArrayTest {
         Integer except1 = 2;
 
         // 实际值
-        StackArray<Object> stackArray = new StackArray<>();
+        StackArray<Integer> stackArray = new StackArray<>();
         stackArray.push(1);
         stackArray.push(4);
         int size = stackArray.getSize();
@@ -104,7 +102,7 @@ class StackArrayTest {
         Integer except1 = 1;
 
         // 实际值
-        StackArray<Object> stackArray = new StackArray<>();
+        StackArray<Integer> stackArray = new StackArray<>();
         stackArray.push(1);
         stackArray.push(4);
         int size = stackArray.getSize();

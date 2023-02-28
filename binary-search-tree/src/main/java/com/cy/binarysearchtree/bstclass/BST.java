@@ -40,6 +40,7 @@ public class BST<E extends Comparable<E>> implements BSTService<E> {
 
     public BST() {
         this.root = null;
+        list = new ArrayList<>();
         this.size = 0;
     }
 
@@ -310,7 +311,6 @@ public class BST<E extends Comparable<E>> implements BSTService<E> {
      * 输出中序遍历的结果
      */
     public void inOrderOutputList() {
-        list = new ArrayList<>();
         inOrderOutputList(root);
     }
 

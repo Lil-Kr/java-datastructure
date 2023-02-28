@@ -21,9 +21,9 @@ class BSTTest {
     public void add_inOrder_1() {
         BST<Integer> bst = new BST<>();
 //        int[] nums = {5,3,6,8,4,2};
-        int[] nums = {5,2,4,3,8,6};
-        for (int num : nums) {
-            bst.add(num);
+        Comparable[] nums = {5,2,4,3,8,6};
+        for (Comparable num : nums) {
+            bst.add((Integer) num);
         }
 
         bst.preOrder();

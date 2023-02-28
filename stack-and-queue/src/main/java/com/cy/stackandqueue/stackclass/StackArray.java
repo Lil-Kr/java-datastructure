@@ -7,9 +7,9 @@ import com.cy.array.arrayclass.Array;
  * @Date: 2023/2/21
  * @Description: 自实现栈结构
  */
-public class StackArray<E> implements Stack<E>{
+public class StackArray<E extends Comparable<E>> implements Stack<E>{
 
-    private Array array;
+    private Array<E> array;
 
     public StackArray() {
         array = new Array();
