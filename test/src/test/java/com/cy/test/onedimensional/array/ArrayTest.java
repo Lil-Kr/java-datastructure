@@ -9,13 +9,13 @@ import org.junit.jupiter.api.Test;
 @Slf4j
 class ArrayTest {
 
-    private Array<Integer> array;
+    private Arrays<Integer> array;
 
     private int initnums = 10;
 
     @BeforeEach
     public void init() {
-        array = new Array<>();
+        array = new Arrays<>();
         for (int i = 0; i < initnums; i++) {
             array.add(i,i+1);
         }
@@ -63,7 +63,7 @@ class ArrayTest {
     @Test
     void remove_1() {
         Comparable[] except1 = {1,2,4,5,6,7,8,9,10,99};
-        
+
         System.out.println(array.getSize());
         System.out.println(array.getCapacity());
         System.out.println(JSON.toJSONString(array.toArray()));
@@ -93,7 +93,7 @@ class ArrayTest {
             }
         });
 
-        Assertions.assertEquals(exception.getMessage(),"add element index was error");
+        Assertions.assertEquals(exception.getMessage(),"remove method index is error");
     }
 
     @Test

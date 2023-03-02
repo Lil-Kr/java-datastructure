@@ -37,7 +37,7 @@ public class SetLinkedList<E> implements SetService<E> {
 
     @Override
     public List<E> getSetBSTs() {
-        return Arrays.asList(linkedListDummy.getArray());
+        return Arrays.asList(linkedListDummy.toArray());
     }
 
     @Override

@@ -4,7 +4,6 @@ import com.alibaba.fastjson2.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Slf4j
@@ -22,11 +21,11 @@ class LinkedListDummyTest {
         listDummy.addLast(3);
         listDummy.addLast(33);
         listDummy.addLast(78);
-        Object[] actual1 = listDummy.getArray();
+        Object[] actual1 = listDummy.toArray();
         Assertions.assertArrayEquals(expect1,actual1);
 
         listDummy.add(2,6);
-        Object[] actual2 = listDummy.getArray();
+        Object[] actual2 = listDummy.toArray();
         Assertions.assertArrayEquals(expect2,actual2);
 
         log.info(listDummy.toString());
@@ -43,7 +42,7 @@ class LinkedListDummyTest {
         listDummy.addFirst(3);
         listDummy.addFirst(33);
         listDummy.addFirst(78);
-        Object[] actual1 = listDummy.getArray();
+        Object[] actual1 = listDummy.toArray();
 
         log.info("expect1 value: {}", JSON.toJSONString(expect1));
         log.info("actual1 value: {}", JSON.toJSONString(actual1));
@@ -61,7 +60,7 @@ class LinkedListDummyTest {
         listDummy.addLast(33);
         listDummy.addLast(3);
         listDummy.addLast(4);
-        Object[] actual1 = listDummy.getArray();
+        Object[] actual1 = listDummy.toArray();
 
         log.info("expect1 value: {}", JSON.toJSONString(expect1));
         log.info("actual1 value: {}", JSON.toJSONString(actual1));
@@ -80,14 +79,14 @@ class LinkedListDummyTest {
         listDummy.addLast(33);
         listDummy.addLast(3);
         listDummy.addLast(4);
-        Object[] actual1 = listDummy.getArray();
-        listDummy.update(2, 21);
+        Object[] actual1 = listDummy.toArray();
+        listDummy.set(2, 21);
 
         log.info("expect1 value: {}", JSON.toJSONString(expect1));
         log.info("actual1 value: {}", JSON.toJSONString(actual1));
         Assertions.assertArrayEquals(expect1,actual1);
 
-        Object[] actual2 = listDummy.getArray();
+        Object[] actual2 = listDummy.toArray();
 
         log.info("expect2 value: {}", JSON.toJSONString(expect2));
         log.info("actual2 value: {}", JSON.toJSONString(actual2));
@@ -107,14 +106,14 @@ class LinkedListDummyTest {
         listDummy.addLast(33);
         listDummy.addLast(3);
         listDummy.addLast(4);
-        Object[] actual1 = listDummy.getArray();
+        Object[] actual1 = listDummy.toArray();
 
         log.info("expect1 value: {}", JSON.toJSONString(expect1));
         log.info("actual1 value: {}", JSON.toJSONString(actual1));
         Assertions.assertArrayEquals(expect1,actual1);
 
         listDummy.remove(1);
-        Object[] actual2 = listDummy.getArray();
+        Object[] actual2 = listDummy.toArray();
         log.info("expect2 value: {}", JSON.toJSONString(expect2));
         log.info("actual2 value: {}", JSON.toJSONString(actual2));
         Assertions.assertArrayEquals(expect2,actual2);
@@ -132,14 +131,14 @@ class LinkedListDummyTest {
         listDummy.addLast(33);
         listDummy.addLast(3);
         listDummy.addLast(4);
-        Object[] actual1 = listDummy.getArray();
+        Object[] actual1 = listDummy.toArray();
 
         log.info("expect1 value: {}", JSON.toJSONString(expect1));
         log.info("actual1 value: {}", JSON.toJSONString(actual1));
         Assertions.assertArrayEquals(expect1,actual1);
 
         listDummy.removeFirst();
-        Object[] actual2 = listDummy.getArray();
+        Object[] actual2 = listDummy.toArray();
         log.info("expect2 value: {}", JSON.toJSONString(expect2));
         log.info("actual2 value: {}", JSON.toJSONString(actual2));
         Assertions.assertArrayEquals(expect2,actual2);
@@ -157,14 +156,14 @@ class LinkedListDummyTest {
         listDummy.addLast(33);
         listDummy.addLast(3);
         listDummy.addLast(4);
-        Object[] actual1 = listDummy.getArray();
+        Object[] actual1 = listDummy.toArray();
 
         log.info("expect1 value: {}", JSON.toJSONString(expect1));
         log.info("actual1 value: {}", JSON.toJSONString(actual1));
         Assertions.assertArrayEquals(expect1,actual1);
 
         listDummy.removeLast();
-        Object[] actual2 = listDummy.getArray();
+        Object[] actual2 = listDummy.toArray();
         log.info("expect2 value: {}", JSON.toJSONString(expect2));
         log.info("actual2 value: {}", JSON.toJSONString(actual2));
         Assertions.assertArrayEquals(expect2,actual2);
@@ -181,7 +180,7 @@ class LinkedListDummyTest {
         listDummy.addLast(33);
         listDummy.addLast(3);
         listDummy.addLast(4);
-        Object[] actual1 = listDummy.getArray();
+        Object[] actual1 = listDummy.toArray();
 
 
         log.info("expect1 value: {}", JSON.toJSONString(expect1));

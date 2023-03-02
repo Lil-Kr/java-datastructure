@@ -1,22 +1,24 @@
 package com.cy.test.onedimensional.linkedlist;
 
+import com.cy.test.onedimensional.serviec.LinkedArrayService;
+
 /**
  * @Author: Lil-K
- * @Date: 2023/2/28
- * @Description:
+ * @Date: 2023/3/2
+ * @Description: 链表
  */
-public class LinkedArray<E extends Comparable<E>> implements LinkedArrayService<E> {
+public class LinkedList<E extends Comparable<E>> implements LinkedArrayService<E> {
 
     private class Node {
         public E e;
         public Node next;
 
         public Node() {
-            this(null, null);
+            this(null,null);
         }
 
         public Node(E e) {
-            this(e, null);
+            this(e,null);
         }
 
         public Node(E e, Node next) {
@@ -27,45 +29,40 @@ public class LinkedArray<E extends Comparable<E>> implements LinkedArrayService<
 
     private int size;
 
-    /**
-     * 虚拟头节点
-     */
     private Node dummyHead;
 
-    public LinkedArray() {
-        dummyHead = new Node();
-        size = 0;
+    public LinkedList() {
+        this.dummyHead = new Node();
+        this.size = 0;
     }
-
-    /**================== linked list add operation ================== **/
 
     @Override
     public void add(int index, E e) {
-        if (index < 0 || index > size) {
-            throw new IllegalArgumentException("linked list add operation index is error");
+        if(index < 0 || index > size) {
+            throw new IllegalArgumentException("linkedlist add method index is error");
         }
 
         Node prev = dummyHead;
         for (int i = 0; i < index; i++) {
             prev = prev.next;
         }
+
         prev.next = new Node(e, prev.next);
         size++;
     }
 
     public void addFirst(E e) {
-        this.add(0, e);
+        this.add(0,e);
     }
 
     public void addLast(E e) {
-        this.add(size, e);
+        this.add(size,e);
     }
 
-    /**================== linked list remove operation ================== **/
     @Override
     public E remove(int index) {
-        if (index < 0 || index > size || isEmpty()) {
-            throw new IllegalArgumentException("linked list is empty");
+        if(index < 0 || index >= size) {
+            throw new IllegalArgumentException("linkedlist remove method index is error");
         }
 
         Node prev = dummyHead;
@@ -75,24 +72,23 @@ public class LinkedArray<E extends Comparable<E>> implements LinkedArrayService<
 
         Node del = prev.next;
         prev.next = del.next;
-        del.next = null;// help for gc
+        del.next = null;
         size--;
         return del.e;
     }
 
-    public E removeFirst(){
+    public E removeFirst() {
         return this.remove(0);
     }
 
-    public E removeLast(){
+    public E removeLast() {
         return this.remove(size-1);
     }
 
-    /**================== linked list get operation ================== **/
     @Override
     public E get(int index) {
-        if (index < 0 || index >= size || isEmpty()) {
-            throw new IllegalArgumentException("linked list get operation index is error");
+        if(index < 0 || index >= size || isEmpty()) {
+            throw new IllegalArgumentException("linkedlist get method index is error");
         }
 
         Node cur = dummyHead.next;
@@ -103,37 +99,40 @@ public class LinkedArray<E extends Comparable<E>> implements LinkedArrayService<
         return cur.e;
     }
 
-    /**================== linked list set operation ================== **/
+    public E getFirst() {
+        return this.get(0);
+    }
+
+    public E getLast() {
+        return this.get(size-1);
+    }
+
+
     @Override
     public void set(int index, E e) {
-        if (index < 0 || index >= size || isEmpty()) {
-            throw new IllegalArgumentException("linked list get operation index is error");
+        if(index < 0 || index >= size || isEmpty()) {
+            throw new IllegalArgumentException("linkedlist set method index is error");
         }
 
         Node cur = dummyHead.next;
         for (int i = 0; i < index; i++) {
             cur = cur.next;
         }
+
         cur.e = e;
     }
 
     @Override
-    public boolean contains(E e) {
-        return this.indexOf(e) != -1;
-    }
-
-    private int indexOf(E e) {
-        int count = 0;
+    public boolean contain(E e) {
 
         Node prev = dummyHead;
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < size-1; i++) {
             prev = prev.next;
-            if(prev.e.equals(e)){
-                return count;
+            if (prev.e.compareTo(e) == 0) {
+                return true;
             }
-            count++;
         }
-        return -1;
+        return false;
     }
 
     @Override
@@ -148,16 +147,13 @@ public class LinkedArray<E extends Comparable<E>> implements LinkedArrayService<
 
     @Override
     public Comparable[] toArray() {
-        if (isEmpty()) {
-            return null;
-        }
+        Comparable[] newArray = new Comparable[size];
 
-        Comparable[] arr = (E[]) new Comparable[size];
         Node prev = dummyHead;
         for (int i = 0; i < size; i++) {
             prev = prev.next;
-            arr[i] = prev.e;
+            newArray[i] = prev.e;
         }
-        return arr;
+        return newArray;
     }
 }

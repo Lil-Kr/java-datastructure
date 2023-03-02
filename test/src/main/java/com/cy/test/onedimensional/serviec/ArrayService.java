@@ -1,4 +1,4 @@
-package com.cy.test.onedimensional.array;
+package com.cy.test.onedimensional.serviec;
 
 /**
  * @Author: Lil-K
@@ -22,5 +22,7 @@ public interface ArrayService<E> {
     Boolean isEmpty();
 
     int getCapacity();
+
+    E[] toArray();
 
 }

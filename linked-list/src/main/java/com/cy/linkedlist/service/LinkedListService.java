@@ -1,11 +1,11 @@
-package com.cy.test.onedimensional.linkedlist;
+package com.cy.linkedlist.service;
 
 /**
  * @Author: Lil-K
- * @Date: 2023/2/28
+ * @Date: 2023/3/2
  * @Description:
  */
-public interface LinkedArrayService<E> {
+public interface LinkedListService<E> {
 
     void add(int index, E e);
 
@@ -15,12 +15,11 @@ public interface LinkedArrayService<E> {
 
     void set(int index, E e);
 
-    boolean contains(E e);
+    boolean contain();
 
     int getSize();
 
     boolean isEmpty();
 
-    Comparable[] toArray();
-
+    E[] toArray();
 }

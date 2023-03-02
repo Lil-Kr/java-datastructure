@@ -121,7 +121,7 @@ public class LinkedListDummy<E> {
      * @param index
      * @param e
      */
-    public void update(int index, E e) {
+    public void set(int index, E e) {
         checkIndex(index);
 
         Node cur = dummyHead.next;
@@ -222,8 +222,8 @@ public class LinkedListDummy<E> {
         return -1;
     }
 
-    public E[] getArray(){
-        E[] arr = (E[]) new Object[size];
+    public E[] toArray(){
+        E[] arr = (E[]) new Comparable[size];
 
         Node prev = dummyHead;
         for (int i = 0; i < size; i++) {
