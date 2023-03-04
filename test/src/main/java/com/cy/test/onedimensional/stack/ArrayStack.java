@@ -9,6 +9,8 @@ import com.cy.test.onedimensional.serviec.Stack;
  */
 public class ArrayStack<E> implements Stack<E> {
 
+
+
     @Override
     public void push(E e) {
 

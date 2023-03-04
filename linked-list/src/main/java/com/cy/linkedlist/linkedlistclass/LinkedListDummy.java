@@ -77,6 +77,18 @@ public class LinkedListDummy<E> {
         size++;
     }
 
+    public Node addRecursion(Node node, E e) {
+        if (node == null) {
+            size++;
+            new Node(e);
+        }
+
+        if (node.next == null) {
+            node.next = addRecursion(node.next,e);
+        }
+        return node;
+    }
+
     public void addFirst(E e) {
         add(0,e);
     }

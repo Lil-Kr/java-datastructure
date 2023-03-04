@@ -459,9 +459,7 @@ public class BST<E extends Comparable<E>> implements BSTService<E> {
         }
         return min;
     }
-    /** =========================== end ===========================**/
-
-
+    /** =========================== end =========================== **/
 
     public List getBSTListByInOrder(){
         this.inOrderOutputList();

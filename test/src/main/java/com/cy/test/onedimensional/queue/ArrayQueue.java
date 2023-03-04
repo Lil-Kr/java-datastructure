@@ -1,5 +1,6 @@
 package com.cy.test.onedimensional.queue;
 
+import com.cy.test.onedimensional.array.Arrays;
 import com.cy.test.onedimensional.serviec.Queue;
 
 /**
@@ -7,36 +8,41 @@ import com.cy.test.onedimensional.serviec.Queue;
  * @Date: 2023/3/2
  * @Description: 数组实现队列
  */
-public class ArrayQueue<E> implements Queue<E> {
+public class ArrayQueue<E extends Comparable<E>> implements Queue<E> {
 
-//    private Arrays<E>
+    private Arrays<E> arrays;
+
+    public ArrayQueue() {
+        arrays = new Arrays<>();
+    }
 
     @Override
     public void enqueue(E e) {
+        arrays.addLast(e);
     }
 
     @Override
     public E dequeue() {
-        return null;
+        return arrays.removeFirst();
     }
 
     @Override
     public E getFront() {
-        return null;
+        return arrays.getFirst();
     }
 
     @Override
     public E getTail() {
-        return null;
+        return arrays.getLast();
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return arrays.isEmpty();
     }
 
     @Override
     public int getSize() {
-        return 0;
+        return arrays.getSize();
     }
 }
