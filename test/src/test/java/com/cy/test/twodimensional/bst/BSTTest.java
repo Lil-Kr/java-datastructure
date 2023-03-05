@@ -13,9 +13,10 @@ class BSTTest {
     private Integer initNums = 10;
 
     private Integer maxN = 322;
+
     private Integer minN = 0;
 
-    private Integer[] nums = {4,22,28,9, minN,2,32,87, maxN};
+    private Integer[] nums = {4, 22, 28, 9, minN, 2, 32, 87, maxN};
 
     @BeforeEach
     public void init() {
@@ -33,7 +34,7 @@ class BSTTest {
     @Test
     void getMax() {
         Integer max = bst.getMax();
-        Assertions.assertEquals(max,maxN);
+        Assertions.assertEquals(max, maxN);
     }
 
     @Test
@@ -64,8 +65,7 @@ class BSTTest {
      * 测试删除 最大值和最小值
      */
     @Test
-    void remove_1(){
-
+    void remove_min_max(){
         Integer min = bst.removeMin();
         Assertions.assertTrue(minN == min);
         Assertions.assertEquals(bst.getSize(), nums.length-1);
@@ -79,12 +79,17 @@ class BSTTest {
      * 删除任意值
      */
     @Test
-    void remove_2() {
+    void remove_any() {
         // {4,22,28,9, minN,2,32,87, maxN};
         System.out.println(bst);
 
+        // 删除一个不存在的数
+        bst.remove(400);
+        Assertions.assertEquals(bst.getSize(), nums.length);
+
         bst.remove(4);
         Assertions.assertEquals(bst.getSize(), nums.length-1);
+        Assertions.assertFalse(bst.contain(4));
 
         bst.remove(minN);
         Assertions.assertEquals(bst.getSize(), nums.length-2);
@@ -93,5 +98,42 @@ class BSTTest {
         Assertions.assertEquals(bst.getSize(), nums.length-3);
 
         System.out.println(bst);
+    }
+
+
+    @Test
+    void set_1() {
+        // {4, 22, 28, 9, minN, 2, 32, 87, maxN};
+        // 更新一个不存在的数
+        bst.set(10086, 4);
+        Assertions.assertFalse(bst.contain(10086));
+
+        // 更新第一个数
+        bst.set(4, 10086);
+        Assertions.assertEquals(bst.getSize(), nums.length);
+        Assertions.assertEquals(bst.getMax(), 10086);
+        Assertions.assertEquals(bst.getMin(), minN);
+
+
+        // 更新最后一个数
+        bst.set(maxN,-1);
+        Assertions.assertEquals(bst.getSize(), nums.length);
+        Assertions.assertEquals(bst.getMax(), 10086);
+        Assertions.assertEquals(bst.getMin(), -1);
+
+        // 更新任意一个数
+        bst.set(9,-2);
+        Assertions.assertEquals(bst.getSize(), nums.length);
+        Assertions.assertEquals(bst.getMax(), 10086);
+        Assertions.assertEquals(bst.getMin(), -2);
+        Assertions.assertFalse(bst.contain(9));
+    }
+
+    @Test
+    void levelOrder() {
+        bst.levelOrder();
+        System.out.println("======");
+
+        bst.inOrder();
     }
 }

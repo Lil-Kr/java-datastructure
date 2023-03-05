@@ -9,17 +9,17 @@ public interface BSTService<E> {
 
     void add(E e);
 
+    E getMin();
+
+    E getMax();
+
     void remove(E e);
 
     E removeMin();
 
     E removeMax();
 
-    void set(E e);
-
-    E getMax();
-
-    E getMin();
+    void set(E oldV, E newV);
 
     boolean contain(E e);
 

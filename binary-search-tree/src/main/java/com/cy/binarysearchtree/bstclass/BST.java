@@ -346,6 +346,9 @@ public class BST<E extends Comparable<E>> implements BSTService<E> {
 
     /** =========================== 层序遍历 start ===========================**/
     public void levelOrder(){
+        if(isEmpty())
+            return;
+
         Queue<Node> q = new LinkedList<>();
         q.add(root);
         while (!q.isEmpty()){
