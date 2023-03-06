@@ -176,7 +176,7 @@ public class BST<E extends Comparable<E>> implements BSTService<E> {
 
     @Override
     public void set(E oldV, E newV) {
-        if (isEmpty()) {
+        if (isEmpty() || !contain(oldV)) {
             return;
         }
 

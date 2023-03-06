@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 @Slf4j
 class BSTTest {
 
-    private BST<Integer> bst;
+    private BST1<Integer> bst;
 
     private Integer initNums = 10;
 
@@ -16,11 +16,13 @@ class BSTTest {
 
     private Integer minN = 0;
 
-    private Integer[] nums = {4, 22, 28, 9, minN, 2, 32, 87, maxN};
+//    private Integer[] nums = {4, 22, 28, 9, minN, 2, 32, 87, maxN};
+
+    private Integer[] nums = {6, 4, 1, 3, 22, 20, 23, maxN, 60, minN};
 
     @BeforeEach
     public void init() {
-        bst = new BST<>();
+        bst = new BST1<>();
         for (Integer num : nums) {
             bst.add(num);
         }
@@ -58,7 +60,7 @@ class BSTTest {
         Assertions.assertTrue(contain3);
 
         boolean contain4 = bst.contain(28);
-        Assertions.assertTrue(contain4);
+        Assertions.assertFalse(contain4);
     }
 
     /**
@@ -80,7 +82,6 @@ class BSTTest {
      */
     @Test
     void remove_any() {
-        // {4,22,28,9, minN,2,32,87, maxN};
         System.out.println(bst);
 
         // 删除一个不存在的数
@@ -99,7 +100,6 @@ class BSTTest {
 
         System.out.println(bst);
     }
-
 
     @Test
     void set_1() {
@@ -125,15 +125,37 @@ class BSTTest {
         bst.set(9,-2);
         Assertions.assertEquals(bst.getSize(), nums.length);
         Assertions.assertEquals(bst.getMax(), 10086);
-        Assertions.assertEquals(bst.getMin(), -2);
+        Assertions.assertEquals(bst.getMin(), -1);
         Assertions.assertFalse(bst.contain(9));
     }
 
     @Test
     void levelOrder() {
+        System.out.println("levelOrder: ");
         bst.levelOrder();
-        System.out.println("======");
+    }
 
+    @Test
+    void inOrder() {
+        System.out.println("inOrder: ");
         bst.inOrder();
+    }
+
+    @Test
+    void preOrder() {
+        System.out.println("preOrder: ");
+        bst.preOrder();
+    }
+
+    @Test
+    void preOrderNR() {
+        System.out.println("preOrderNR: ");
+//        bst.preOrderNR();
+    }
+
+    @Test
+    void endOrder() {
+        System.out.println("endOrder: ");
+        bst.endOrder();
     }
 }
