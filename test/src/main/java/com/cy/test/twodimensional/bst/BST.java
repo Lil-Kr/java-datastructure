@@ -236,6 +236,11 @@ public class BST<E extends Comparable<E>> implements BSTService<E> {
     }
 
     @Override
+    public void preOrderNR() {
+
+    }
+
+    @Override
     public void inOrder() {
         if (isEmpty()) {
             return;

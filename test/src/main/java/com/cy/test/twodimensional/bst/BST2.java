@@ -4,17 +4,17 @@ import com.cy.test.twodimensional.serviece.BSTService;
 
 /**
  * @Author: Lil-K
- * @Date: 2023/3/6
+ * @Date: 2023/3/10
  * @Description:
  */
-public class BST1<E extends Comparable<E>> implements BSTService<E> {
+public class BST2<E extends Comparable<E>> implements BSTService<E> {
 
-    private class Node {
-        public E e;
-        public Node left,right;
+    private class Node{
+        private E e;
+        private Node left, right;
 
         public Node(E e) {
-            this(e,null,null);
+            this(e, null,null);
         }
 
         public Node(E e, Node left, Node right) {
@@ -24,12 +24,9 @@ public class BST1<E extends Comparable<E>> implements BSTService<E> {
         }
     }
 
-    private int size;
-
     private Node root;
 
-    public BST1() {
-    }
+    private static int size;
 
     @Override
     public void add(E e) {
@@ -38,7 +35,7 @@ public class BST1<E extends Comparable<E>> implements BSTService<E> {
 
     private Node add(Node node, E e) {
         if (node == null) {
-            size ++;
+            size++;
             return new Node(e);
         }
 
@@ -55,7 +52,6 @@ public class BST1<E extends Comparable<E>> implements BSTService<E> {
         if (isEmpty()) {
             return null;
         }
-
         Node min = getMin(root);
         return min.e;
     }
@@ -64,6 +60,7 @@ public class BST1<E extends Comparable<E>> implements BSTService<E> {
         if (node.left == null) {
             return node;
         }
+
         return getMin(node.left);
     }
 
@@ -90,7 +87,8 @@ public class BST1<E extends Comparable<E>> implements BSTService<E> {
         if (isEmpty()) {
             return;
         }
-        root = remove(root, e);
+
+        root = remove(root,e);
     }
 
     private Node remove(Node node, E e) {
@@ -110,7 +108,7 @@ public class BST1<E extends Comparable<E>> implements BSTService<E> {
                 node.right = null;
                 size--;
                 return rightNode;
-            } else if (node.right == null) {
+            }else if (node.right == null) {
                 Node leftNode = node.left;
                 node.left = null;
                 size--;
@@ -131,9 +129,9 @@ public class BST1<E extends Comparable<E>> implements BSTService<E> {
             return null;
         }
 
-        E min = getMin();
+        Node min = getMin(root);
         root = removeMin(root);
-        return min;
+        return min.e;
     }
 
     private Node removeMin(Node node) {
@@ -143,6 +141,7 @@ public class BST1<E extends Comparable<E>> implements BSTService<E> {
             size--;
             return rightNode;
         }
+
         node.left = removeMin(node.left);
         return node;
     }
@@ -153,9 +152,9 @@ public class BST1<E extends Comparable<E>> implements BSTService<E> {
             return null;
         }
 
-        E max = getMax();
+        Node max = getMax(root);
         root = removeMax(root);
-        return max;
+        return max.e;
     }
 
     private Node removeMax(Node node) {
@@ -165,7 +164,8 @@ public class BST1<E extends Comparable<E>> implements BSTService<E> {
             size--;
             return leftNode;
         }
-        node.right = removeMin(node.right);
+
+        node.right = removeMax(node.right);
         return node;
     }
 
@@ -193,15 +193,21 @@ public class BST1<E extends Comparable<E>> implements BSTService<E> {
         }
 
         if (e.compareTo(node.e) < 0) {
-            return contain(node.left,e);
+            return contain(node.left, e);
         } else if (e.compareTo(node.e) > 0) {
             return contain(node.right, e);
+        }else {
+            return true;
         }
-        return true;
     }
 
     @Override
     public void preOrder() {
+
+    }
+
+    @Override
+    public void preOrderNR() {
 
     }
 

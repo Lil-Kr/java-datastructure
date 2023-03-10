@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 @Slf4j
 class BSTTest {
 
-    private BST1<Integer> bst;
+    private BST2<Integer> bst;
 
     private Integer initNums = 10;
 
@@ -22,7 +22,7 @@ class BSTTest {
 
     @BeforeEach
     public void init() {
-        bst = new BST1<>();
+        bst = new BST2<>();
         for (Integer num : nums) {
             bst.add(num);
         }

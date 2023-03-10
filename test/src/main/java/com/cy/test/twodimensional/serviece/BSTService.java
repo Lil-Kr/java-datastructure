@@ -25,6 +25,8 @@ public interface BSTService<E> {
 
     void preOrder();
 
+    void preOrderNR();
+
     void inOrder();
 
     void endOrder();
