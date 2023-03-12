@@ -1,0 +1,42 @@
+package com.cy.heapandpriorityqueue.heap;
+
+import com.cy.array.arrayclass.Array;
+import com.cy.heapandpriorityqueue.service.HeapService;
+
+/**
+ * @Author: Lil-K
+ * @Date: 2023/3/12
+ * @Description: 最小堆
+ */
+public class MinHeap<E extends Comparable<E>> implements HeapService<E> {
+
+    @Override
+    public void add(E e) {
+
+    }
+
+    @Override
+    public void remove(E e) {
+
+    }
+
+    @Override
+    public E extractMin() {
+        return HeapService.super.extractMin();
+    }
+
+    @Override
+    public E findMin() {
+        return HeapService.super.findMin();
+    }
+
+    @Override
+    public E replace(E e) {
+        return null;
+    }
+
+    @Override
+    public void heapify(Array array) {
+
+    }
+}

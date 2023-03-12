@@ -2,19 +2,23 @@ package com.cy.test.twodimensional.bst;
 
 import com.cy.test.twodimensional.serviece.BSTService;
 
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
+
 /**
  * @Author: Lil-K
- * @Date: 2023/3/10
+ * @Date: 2023/3/12
  * @Description:
  */
 public class BST2<E extends Comparable<E>> implements BSTService<E> {
 
     private class Node{
-        private E e;
-        private Node left, right;
+        public E e;
+        public Node left,right;
 
         public Node(E e) {
-            this(e, null,null);
+            this(e,null,null);
         }
 
         public Node(E e, Node left, Node right) {
@@ -24,9 +28,9 @@ public class BST2<E extends Comparable<E>> implements BSTService<E> {
         }
     }
 
-    private Node root;
+    private int size;
 
-    private static int size;
+    private Node root;
 
     @Override
     public void add(E e) {
@@ -40,9 +44,9 @@ public class BST2<E extends Comparable<E>> implements BSTService<E> {
         }
 
         if (e.compareTo(node.e) < 0) {
-            node.left = add(node.left, e);
+            node.left = add(node.left,e);
         } else if (e.compareTo(node.e) > 0) {
-            node.right = add(node.right, e);
+            node.right = add(node.right,e);
         }
         return node;
     }
@@ -52,6 +56,7 @@ public class BST2<E extends Comparable<E>> implements BSTService<E> {
         if (isEmpty()) {
             return null;
         }
+
         Node min = getMin(root);
         return min.e;
     }
@@ -78,7 +83,6 @@ public class BST2<E extends Comparable<E>> implements BSTService<E> {
         if (node.right == null) {
             return node;
         }
-
         return getMax(node.right);
     }
 
@@ -100,15 +104,15 @@ public class BST2<E extends Comparable<E>> implements BSTService<E> {
             node.left = remove(node.left,e);
             return node;
         } else if (e.compareTo(node.e) > 0) {
-            node.right = remove(node.right, e);
+            node.right = remove(node.right,e);
             return node;
-        }else {
+        }else { // e.compareTo(node.e) == 0
             if (node.left == null) {
                 Node rightNode = node.right;
                 node.right = null;
                 size--;
                 return rightNode;
-            }else if (node.right == null) {
+            } else if (node.right == null) {
                 Node leftNode = node.left;
                 node.left = null;
                 size--;
@@ -164,7 +168,6 @@ public class BST2<E extends Comparable<E>> implements BSTService<E> {
             size--;
             return leftNode;
         }
-
         node.right = removeMax(node.right);
         return node;
     }
@@ -191,7 +194,7 @@ public class BST2<E extends Comparable<E>> implements BSTService<E> {
         if (node == null) {
             return false;
         }
-
+        
         if (e.compareTo(node.e) < 0) {
             return contain(node.left, e);
         } else if (e.compareTo(node.e) > 0) {
@@ -203,28 +206,100 @@ public class BST2<E extends Comparable<E>> implements BSTService<E> {
 
     @Override
     public void preOrder() {
+        if (isEmpty()) {
+            return;
+        }
+        preOrder(root);
+    }
 
+    private void preOrder(Node node) {
+        if (node == null) {
+            return;
+        }
+
+        System.out.println(node.e);
+        preOrder(node.left);
+        preOrder(node.right);
     }
 
     @Override
     public void preOrderNR() {
+        if (isEmpty()) {
+            return;
+        }
 
+        Stack<Node> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            Node cur = stack.pop();
+            System.out.println(cur.e);
+
+            if (cur.right != null) {
+                stack.push(cur.right);
+            }
+
+            if (cur.left != null) {
+                stack.push(cur.left);
+            }
+        }
     }
 
     @Override
     public void inOrder() {
+        if (isEmpty()) {
+            return;
+        }
+        inOrder(root);
+    }
 
+    private void inOrder(Node node) {
+        if (node == null) {
+            return;
+        }
+
+        inOrder(node.left);
+        System.out.println(node.e);
+        inOrder(node.right);
     }
 
     @Override
     public void endOrder() {
+        if (isEmpty()) {
+            return;
+        }
+        endOrder(root);
+    }
+    private void endOrder(Node node) {
+        if (node == null) {
+            return;
+        }
 
+        endOrder(node.left);
+        endOrder(node.right);
+        System.out.println(node.e);
     }
 
     @Override
     public void levelOrder() {
+        if (root == null) {
+            return;
+        }
 
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        while (!q.isEmpty()) {
+            Node cur = q.poll();
+            System.out.println(cur.e);
+            if (cur.left != null) {
+                q.add(cur.left);
+            }
+
+            if (cur.right != null) {
+                q.add(cur.right);
+            }
+        }
     }
+
 
     @Override
     public int getSize() {

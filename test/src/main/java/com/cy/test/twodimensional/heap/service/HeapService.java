@@ -1,6 +1,7 @@
-package com.cy.heapandpriorityqueue.service;
+package com.cy.test.twodimensional.heap.service;
 
-import com.cy.array.arrayclass.Array;
+
+import com.cy.test.twodimensional.heap.helper.Array;
 
 /**
  * @Author: Lil-K

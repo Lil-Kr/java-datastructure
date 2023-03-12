@@ -150,7 +150,7 @@ class BSTTest {
     @Test
     void preOrderNR() {
         System.out.println("preOrderNR: ");
-//        bst.preOrderNR();
+        bst.preOrderNR();
     }
 
     @Test
