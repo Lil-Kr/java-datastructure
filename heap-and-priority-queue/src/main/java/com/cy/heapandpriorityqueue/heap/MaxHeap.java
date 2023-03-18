@@ -7,6 +7,25 @@ import com.cy.heapandpriorityqueue.service.HeapService;
  * @Author: Lil-K
  * @Date: 2023/2/26
  * @Description: 最大堆 底层实现
+ *
+ * 堆的特性
+ * 1. 堆也是一颗二叉树, 把元素码一排一排放成树的结构
+ * 2. 如果堆不是一颗满二叉树, 那么不满的那部分一在树结构的右边
+ * 3. 堆的底层存储可以用数组(推荐), 也可以用链表
+ *
+ * 需要具备的必要函数
+ * 1. 计算左, 右节点的索引
+ *  1.1 浪费一个数组的空间, 将元素个数和索引值对应上
+ *      1.1.1 parent(i) = i/2;
+ *      1.1.2 left child (i) = i * 2;
+ *      1.1.3 right child (i) = (i * 2) + 1;
+ *
+ *  1.2 不浪费一个数组的存储空间, 索引值 = 元素个数 - 1
+ *      1.2.1 parent(i) = (i - 1) / 2;
+ *      1.2.2 left child (i) = (i * 2) + 1;
+ *      1.2.2 right child (i) = (i * 2) + 2;
+ *
+ * 2. 需要设计上浮元素, 下沉元素的操作
  */
 public class MaxHeap<E extends Comparable<E>> implements HeapService<E> {
 

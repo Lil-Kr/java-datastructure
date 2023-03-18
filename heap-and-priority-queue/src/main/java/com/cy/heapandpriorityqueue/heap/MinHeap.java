@@ -39,4 +39,14 @@ public class MinHeap<E extends Comparable<E>> implements HeapService<E> {
     public void heapify(Array array) {
 
     }
+
+    @Override
+    public boolean isEmpty() {
+        return false;
+    }
+
+    @Override
+    public int getSize() {
+        return 0;
+    }
 }

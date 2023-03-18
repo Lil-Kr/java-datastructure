@@ -1,12 +1,17 @@
 package com.cy.stackandqueue.stackclass;
 
 import com.cy.array.arrayclass.Array;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 /**
  * @Author: Lil-K
  * @Date: 2023/2/21
  * @Description: 自实现栈结构
  */
+@Component
+@Service
+
 public class StackArray<E extends Comparable<E>> implements Stack<E>{
 
     private Array<E> array;

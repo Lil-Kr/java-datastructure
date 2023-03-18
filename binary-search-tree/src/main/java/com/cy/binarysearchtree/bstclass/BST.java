@@ -290,7 +290,6 @@ public class BST<E extends Comparable<E>> implements BSTService<E> {
     }
     /** =========================== end ===========================**/
 
-
     /** =========================== 中序遍历 start ===========================**/
     public void inOrder() {
         inOrder(root);
@@ -464,7 +463,7 @@ public class BST<E extends Comparable<E>> implements BSTService<E> {
     }
     /** =========================== end =========================== **/
 
-    public List getBSTListByInOrder(){
+    public List getBSTListByInOrder() {
         this.inOrderOutputList();
         return list;
     }

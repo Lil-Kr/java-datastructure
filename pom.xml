@@ -25,6 +25,8 @@
         <module>hashtable</module>
         <module>heap-and-priority-queue</module>
         <module>test</module>
+        <module>segment-tree</module>
+        <module>avl-tree</module>
     </modules>
 
     <properties>

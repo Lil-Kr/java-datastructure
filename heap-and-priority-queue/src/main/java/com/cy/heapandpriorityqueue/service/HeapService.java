@@ -33,4 +33,7 @@ public interface HeapService<E> {
 
     void heapify(Array array);
 
+    boolean isEmpty();
+
+    int getSize();
 }
