@@ -5,7 +5,7 @@ package com.cy.segmenttree.interfaces;
  * @Date: 2023/3/17
  * @Description:
  */
-public interface Merger<E> {
+public interface Rule<E> {
 
     E merge(E a, E b);
 

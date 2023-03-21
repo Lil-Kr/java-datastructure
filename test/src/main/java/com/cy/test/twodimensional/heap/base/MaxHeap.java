@@ -88,6 +88,10 @@ public class MaxHeap<E extends Comparable<E>> implements HeapService<E> {
 
     @Override
     public void heapify(E[] arr) {
+        /**
+         * 找到最后一个非叶子节点的索引, 就是最后一个元素的 parentIndex
+         * 找到这个索引和之前的索引的所有元素, 都依次做 siftDown 操作
+         */
         int parentIndex = this.parentIndex(arr.length - 1);
         for (int i = parentIndex; i >= 0; i--) {
             siftDown(i);
@@ -154,7 +158,9 @@ public class MaxHeap<E extends Comparable<E>> implements HeapService<E> {
      */
     private void siftDown(int k) {
 
-        // 此情况表示 -> k 这个节点一定有左子节点
+        /**
+         * 此情况表示 -> k 这个节点一定有左子节点
+         */
         while (leftChildIndex(k) < array.size()) {
             int j = leftChildIndex(k);
             /**
