@@ -21,7 +21,6 @@ public class AVLTree<K extends Comparable<K>, V> {
 
         //
         public int height;
-
         public Node (K key, V value) {
             /**
              * height: 默认1
@@ -48,6 +47,11 @@ public class AVLTree<K extends Comparable<K>, V> {
         size = 0;
     }
 
+    /**
+     * 添加节点
+     * @param key
+     * @param value
+     */
     public void add(K key, V value) {
         root = add(root, key, value);
     }
@@ -83,16 +87,41 @@ public class AVLTree<K extends Comparable<K>, V> {
             System.out.println("un balanced: " + balanceFactor);
         }
 
+        /** ================ 维护平衡性 ================ **/
+
         /**
-         * 维护平衡性
-         * 1. balanceFactor > 1, 左边高于右边, 左边不平衡的情况  -> 需要右旋转
-         * 2.
+         * 1. LL的情况, balanceFactor > 1, 左边高于右边, 左边不平衡的情况  -> 需要右旋转
          */
         if (balanceFactor > 1 && getBalanceFactor(node.left) >= 0) {// 右旋转
             return rightRotate(node);
         }
 
-        if(balanceFactor < -1 && getBalanceFactor(node.right) <= 0) {
+        /**
+         * 维护平衡性
+         * 2. RR的情况, balanceFactor < -1
+         */
+        if(balanceFactor < -1 && getBalanceFactor(node.right) <= 0) {// 左旋转
+            return leftRotate(node);
+        }
+
+        /**
+         * LR
+         * 当前节点 -> 左子树 比 右子树高
+         * 子节点 -> 左子树 比 右子树矮, 说明元素添加到了【左边的右边】
+         */
+        if (balanceFactor > 1 && getBalanceFactor(node.left) < 0) {
+            /**
+             * 先左旋转 -> 转化为LL的模式
+             */
+            node.left = leftRotate(node.left);
+            return rightRotate(node);
+        }
+
+        /**
+         * RL
+         */
+        if (balanceFactor < -1 && getBalanceFactor(node.right) > 0) {
+            node.right = rightRotate(node.right);
             return leftRotate(node);
         }
 
