@@ -19,8 +19,11 @@ public class AVLTree<K extends Comparable<K>, V> {
         public V value;
         public Node left, right;
 
-        //
+        /**
+         * 每个节点的高度, height
+         */
         public int height;
+
         public Node (K key, V value) {
             /**
              * height: 默认1
@@ -66,12 +69,13 @@ public class AVLTree<K extends Comparable<K>, V> {
             node.left = add(node.left, key, value);
         } else if (key.compareTo(node.key) > 0) {
             node.right = add(node.right, key, value);
-        }else {
+        } else {
             node.value = value;
         }
 
         /**
          * 更新 height
+         * 计算: 左右高度的最大值 + 1
          */
         node.height = 1 + Math.max(getHeight(node.left), getHeight(node.right));
 
@@ -90,22 +94,25 @@ public class AVLTree<K extends Comparable<K>, V> {
         /** ================ 维护平衡性 ================ **/
 
         /**
-         * 1. LL的情况, balanceFactor > 1, 左边高于右边, 左边不平衡的情况  -> 需要右旋转
+         * 1. L-L的情况, balanceFactor > 1
+         * 左边高于右边, 并且由于左侧的左侧多添加了一个节点导致不平衡的
+         * 左边不平衡的情况 -> 需要右旋转
          */
         if (balanceFactor > 1 && getBalanceFactor(node.left) >= 0) {// 右旋转
             return rightRotate(node);
         }
 
         /**
-         * 维护平衡性
-         * 2. RR的情况, balanceFactor < -1
+         * 2. R-R的情况, balanceFactor < -1
+         * 右边高于左边, 并且由于右侧的右侧多添加了一个节点导致不平衡的
+         * 右侧不平衡的情况  -> 需要左旋转
          */
         if(balanceFactor < -1 && getBalanceFactor(node.right) <= 0) {// 左旋转
             return leftRotate(node);
         }
 
         /**
-         * LR
+         * LR -> LL -> balance
          * 当前节点 -> 左子树 比 右子树高
          * 子节点 -> 左子树 比 右子树矮, 说明元素添加到了【左边的右边】
          */
@@ -118,7 +125,7 @@ public class AVLTree<K extends Comparable<K>, V> {
         }
 
         /**
-         * RL
+         * RL -> RR -> balance
          */
         if (balanceFactor < -1 && getBalanceFactor(node.right) > 0) {
             node.right = rightRotate(node.right);
@@ -126,6 +133,60 @@ public class AVLTree<K extends Comparable<K>, V> {
         }
 
         return node;
+    }
+
+    /**
+     * 删除元素
+     * @param key
+     */
+    public void remove(K key) {
+        root = remove(root, key);
+    }
+
+    private Node remove(Node node, K key) {
+        if (node == null) {
+            return null;
+        }
+
+        if (key.compareTo(node.key) < 0) {
+            node.left = remove(node.left, key);
+            return node;
+        } else if (key.compareTo(node.key) > 0) {
+            node.right = remove(node.right, key);
+            return node;
+        }else {
+            if (node.left == null) {
+                Node rightNode = node.right;
+                node.right = null;
+                size --;
+                return rightNode;
+            } else if (node.right == null) {
+                Node leftNode = node.left;
+                node.left = null;
+                size--;
+                return leftNode;
+            } else {
+                Node s = getMin(node.right);
+
+            }
+        }
+
+        return null;
+    }
+
+    /** =========================== 获取最小值 ===========================**/
+    public V getMin() {
+        if (size == 0){
+            throw new IllegalArgumentException("BST is empty!");
+        }
+        return getMin(root).value;
+    }
+
+    private Node getMin(Node node) {
+        if(node.left == null) {
+            return node;
+        }
+        return getMin(node.left);
     }
 
     /**
@@ -145,6 +206,8 @@ public class AVLTree<K extends Comparable<K>, V> {
 
         /**
          * 更新 height
+         * y.left 已变更为 x.right, y.right 不变 ()
+         * x.left 不变, x.right 已变更为 y ()
          */
         y.height = Math.max(getHeight(y.left), getHeight(y.right)) + 1;
         x.height = Math.max(getHeight(x.left), getHeight(x.right)) + 1;

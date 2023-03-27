@@ -155,7 +155,7 @@ public class BST<E extends Comparable<E>> implements BSTService<E> {
     }
 
     /**
-     *
+     * 删除元素
      * @param node
      * @param e
      * @return
