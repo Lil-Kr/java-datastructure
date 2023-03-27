@@ -147,7 +147,7 @@ public class BST<E extends Comparable<E>> implements BSTService<E> {
      */
     @Override
     public void remove(E e) {
-        if (size == 0){
+        if (size == 0) {
             throw new IllegalArgumentException("BST is empty!");
         }
 

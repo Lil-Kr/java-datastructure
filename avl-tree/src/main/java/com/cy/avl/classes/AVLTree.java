@@ -167,11 +167,46 @@ public class AVLTree<K extends Comparable<K>, V> {
                 return leftNode;
             } else {
                 Node s = getMin(node.right);
+                s.right = removeMin(node.right); // 已包含 size--
+                s.left = node.left;
 
+                node.left = node.right = null; // 不需要再次 size--
+                return s;
             }
         }
+    }
 
-        return null;
+    /**
+     * 删除最小值, 并返回
+     * @return
+     */
+    public V removeMin() {
+        V ret = getMin();
+        /**
+         * 找到待删除元素的位置
+         */
+        root = removeMin(root);
+        return ret;
+    }
+
+    /**
+     * 删除以node为根的二分搜索树中的最小节点
+     * 返回删除节点后新的二分搜索树的根
+     * @param node
+     * @return
+     */
+    private Node removeMin(Node node) {
+        if (node.left == null) {
+            // 保存右节点, 作为删除节点后新的二分搜索树的根
+            Node rightNode = node.right;
+            // 删除右节点
+            node.right = null;
+            size--;
+            return rightNode;
+        }
+
+        node.left = removeMin(node.left);
+        return node;
     }
 
     /** =========================== 获取最小值 ===========================**/
