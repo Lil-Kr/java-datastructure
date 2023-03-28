@@ -169,7 +169,6 @@ public class AVLTree<K extends Comparable<K>, V> {
                 Node s = getMin(node.right);
                 s.right = removeMin(node.right); // 已包含 size--
                 s.left = node.left;
-
                 node.left = node.right = null; // 不需要再次 size--
                 return s;
             }
