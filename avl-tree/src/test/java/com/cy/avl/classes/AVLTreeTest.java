@@ -1,10 +1,9 @@
 package com.cy.avl.classes;
 
 import com.cy.binarysearchtree.bstclass.BST;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class AVLTreeTest {
 
@@ -20,15 +19,25 @@ class AVLTreeTest {
 
     @Test
     void add_1() {
-        Integer[] nums = {1,2,3};
+        Integer[] nums = {1,2,3,4,5,6};
         for (int i = 0; i < nums.length; i++) {
-            bst.add(nums[i]);
             avlTree.add(nums[i], null);
         }
 
-        System.out.println(bst);
+        Assertions.assertEquals(nums.length, avlTree.getSize());
+
         System.out.println("===========");
         System.out.println(avlTree);
+
+
+        avlTree.remove(6);
+        avlTree.remove(5);
+        avlTree.remove(4);
+
+        Assertions.assertEquals(3, avlTree.getSize());
+
+//        System.out.println("===========");
+//        System.out.println(avlTree);
     }
 
 }

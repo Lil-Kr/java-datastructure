@@ -171,6 +171,9 @@ public class AVLTree<K extends Comparable<K>, V> implements AVLService<K, V> {
                 retNode = leftNode;
             } else {
                 Node s = getMin(node.right);
+                /**
+                 * 此处remove 有可能会打破AVL的平衡
+                 */
                 s.right = remove(node.right, s.key); // 已包含 size--
                 s.left = node.left;
                 node.left = node.right = null; // 不需要再次 size--
@@ -178,6 +181,9 @@ public class AVLTree<K extends Comparable<K>, V> implements AVLService<K, V> {
             }
         }
 
+        /**
+         * 防止空指针
+         */
         if (retNode == null) {
             return null;
         }
@@ -237,43 +243,10 @@ public class AVLTree<K extends Comparable<K>, V> implements AVLService<K, V> {
         return retNode;
     }
 
-    /**
-     * 删除最小值, 并返回
-     * @return
-     */
-    public V removeMin() {
-        V ret = getMin();
-        /**
-         * 找到待删除元素的位置
-         */
-        root = removeMin(root);
-        return ret;
-    }
-
-    /**
-     * 删除以node为根的二分搜索树中的最小节点
-     * 返回删除节点后新的二分搜索树的根
-     * @param node
-     * @return
-     */
-    private Node removeMin(Node node) {
-        if (node.left == null) {
-            // 保存右节点, 作为删除节点后新的二分搜索树的根
-            Node rightNode = node.right;
-            // 删除右节点
-            node.right = null;
-            size--;
-            return rightNode;
-        }
-
-        node.left = removeMin(node.left);
-        return node;
-    }
-
     /** =========================== 获取最小值 ===========================**/
     public V getMin() {
         if (size == 0){
-            throw new IllegalArgumentException("BST is empty!");
+            throw new IllegalArgumentException("AVL is empty!");
         }
         return getMin(root).value;
     }
@@ -393,7 +366,6 @@ public class AVLTree<K extends Comparable<K>, V> implements AVLService<K, V> {
         if (node == null) {
             return 0;
         }
-
         return getHeight(node.left) - getHeight(node.right);
     }
 
@@ -427,20 +399,20 @@ public class AVLTree<K extends Comparable<K>, V> implements AVLService<K, V> {
     @Override
     public String toString() {
         StringBuilder res = new StringBuilder();
-        generateBSTString(root,0,res);
+        generateAVLString(root,0,res);
 
         return res.toString();
     }
 
-    private void generateBSTString(Node node, int depth, StringBuilder res) {
+    private void generateAVLString(Node node, int depth, StringBuilder res) {
         if(node == null) {
             res.append(generateDepthString(depth) + "null \n");
             return;
         }
 
         res.append(generateDepthString(depth) + node.key + "\n");
-        generateBSTString(node.left, depth + 1, res);
-        generateBSTString(node.right, depth + 1, res);
+        generateAVLString(node.left, depth + 1, res);
+        generateAVLString(node.right, depth + 1, res);
     }
 
     private String generateDepthString(int depth) {
