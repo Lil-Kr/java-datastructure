@@ -1,43 +1,53 @@
 package com.cy.test.onedimensional.array;
 
+import com.alibaba.fastjson2.JSON;
 import com.cy.test.onedimensional.serviec.ArrayService;
 
 /**
  * @Author: Lil-K
- * @Date: 2023/3/2
+ * @Date: 2023/3/31
  * @Description: 动态数组
  */
 public class Arrays<E extends Comparable<E>> implements ArrayService<E> {
 
+    private Comparable<E>[] data;
+
     private int size;
 
-    private E[] data;
-
-    private static int DEFAULT_CAPACITY = 10;
+    private int DEFAULT_CAPACITY = 10;
 
     public Arrays() {
-        this(DEFAULT_CAPACITY);
+        this.data = new Comparable[DEFAULT_CAPACITY];
+        this.size = 0;
     }
 
     public Arrays(int capacity) {
-        data = (E[]) new Comparable[capacity];
-        size = 0;
+        this.data = new Comparable[capacity];
+        this.size = 0;
+    }
+
+    private void resize(int newCapacity) {
+        Comparable<E>[] newData = new Comparable[newCapacity];
+        for (int i = 0; i < data.length; i++) {
+            newData[i] = data[i];
+        }
+        data = newData;
     }
 
     @Override
     public void add(int index, E e) {
         if (index < 0 || index > size) {
-            throw new IllegalArgumentException("add method index is error ");
+            throw new IllegalArgumentException("array add method index is error");
         }
 
         /**
-         * 扩容
+         * resize()
          */
-        if (size == this.getCapacity()) {
-            resize(this.getCapacity() + (this.getCapacity() >> 1));
+        if (size == getCapacity()) {
+            resize(getCapacity() + (getCapacity() >> 1));
         }
 
-        if (index == size + 1) {
+        if (index == size) {
             data[size] = e;
         }else {
             for (int i = size; i > index; i--) {
@@ -45,70 +55,60 @@ public class Arrays<E extends Comparable<E>> implements ArrayService<E> {
             }
             data[index] = e;
         }
-        size ++;
-    }
-
-    private void resize(int newCapacity) {
-        E[] newData = (E[]) new Comparable[newCapacity];
-
-        for (int i = 0; i < size; i++) {
-            newData[i] = data[i];
-        }
-        data = newData;
+        size++;
     }
 
     public void addFirst(E e) {
-        this.add(0, e);
+        add(0, e);
     }
 
     public void addLast(E e) {
-        this.add(size, e);
+        add(size, e);
     }
 
     @Override
     public E remove(int index) {
-        if (index < 0 || index > size || isEmpty()) {
-            throw new IllegalArgumentException("remove method index is error");
+        if (index < 0 || index >= size) {
+            throw new IllegalArgumentException("array remove method index is error");
         }
+        Comparable<E> ret = data[index];
 
-        E del = data[index];
-        if (index == size) {
-            data[index] = null;
+        if (index == size-1) {
+            data[size-1] = null;
         }else {
             for (int i = index; i < size - 1; i++) {
                 data[i] = data[i + 1];
             }
-            // 将最后一个元素置为空
-            data[size-1] = null;
+            data[size - 1] = null;
         }
         size--;
 
         /**
          * 缩容
          */
-        if (size >= DEFAULT_CAPACITY && size <= getCapacity() / 4) {
-            resize(getCapacity() >> 1);
+        if (size >= DEFAULT_CAPACITY && size <= getCapacity() >> 2) {
+            resize(getCapacity());
         }
 
-        return del;
+        return (E) ret;
     }
 
-    public E removeLast(){
-        return this.remove(size-1);
+    public E removeFirst() {
+        return remove(0);
     }
 
-    public E removeFirst(){
-        return this.remove(0);
+    public E removeLast() {
+        return remove(size - 1);
     }
 
     @Override
-    public Boolean contains(E e) {
+    public boolean contains(E e) {
         if (isEmpty()) {
-            throw new IllegalArgumentException("contains method -> array is empty");
+            throw new IllegalArgumentException("array contains method is empty");
         }
 
         for (int i = 0; i < size; i++) {
-            if (data[i] == e) {
+            if (data[i].compareTo(e) == 0) {
                 return true;
             }
         }
@@ -117,42 +117,35 @@ public class Arrays<E extends Comparable<E>> implements ArrayService<E> {
 
     @Override
     public E get(int index) {
-        if (index < 0 || index > size) {
-            throw new IllegalArgumentException("get method index is error ");
+        if (index < 0 || index >= size) {
+            throw new IllegalArgumentException("array get method index is error");
         }
-
-        return data[index];
+        return (E) data[index];
     }
 
     public E getFirst() {
-        if (isEmpty()) {
-            throw new IllegalArgumentException("getFirst method data was empty");
-        }
-        return data[0];
+        return get(0);
     }
 
     public E getLast() {
-        if (isEmpty()) {
-            throw new IllegalArgumentException("getLast method data was empty");
-        }
-        return data[size-1];
+        return get(size-1);
     }
 
     @Override
     public void set(int index, E e) {
-        if (index < 0 || index > size) {
-            throw new IllegalArgumentException("set method index is error ");
+        if (index < 0 || index >= size) {
+            throw new IllegalArgumentException("array get method index is error");
         }
         data[index] = e;
     }
 
     @Override
-    public Integer getSize() {
+    public int getSize() {
         return size;
     }
 
     @Override
-    public Boolean isEmpty() {
+    public boolean isEmpty() {
         return size == 0;
     }
 
@@ -165,8 +158,13 @@ public class Arrays<E extends Comparable<E>> implements ArrayService<E> {
     public E[] toArray() {
         E[] newData = (E[]) new Comparable[size];
         for (int i = 0; i < size; i++) {
-            newData[i] = data[i];
+            newData[i] = (E) data[i];
         }
         return newData;
+    }
+
+    @Override
+    public String toString() {
+        return JSON.toJSONString(toArray());
     }
 }

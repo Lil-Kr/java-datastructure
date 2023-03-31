@@ -37,6 +37,8 @@ class ArrayTest {
         Comparable[] actual1 = array.toArray();
         Assertions.assertEquals(initnums+1, array.getSize());
         Assertions.assertArrayEquals(except1,actual1);
+
+        System.out.println(JSON.toJSONString(array.toArray()));
     }
 
     @Test
@@ -93,7 +95,7 @@ class ArrayTest {
             }
         });
 
-        Assertions.assertEquals(exception.getMessage(),"remove method index is error");
+        Assertions.assertEquals(exception.getMessage(),"array remove method index is error");
     }
 
     @Test

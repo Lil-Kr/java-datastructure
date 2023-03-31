@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 @Slf4j
 class BSTTest {
 
-    private BST2<Integer> bst;
+    private BST3<Integer> bst;
 
     private Integer initNums = 10;
 
@@ -22,7 +22,7 @@ class BSTTest {
 
     @BeforeEach
     public void init() {
-        bst = new BST2<>();
+        bst = new BST3<>();
         for (Integer num : nums) {
             bst.add(num);
         }
@@ -113,7 +113,6 @@ class BSTTest {
         Assertions.assertEquals(bst.getSize(), nums.length);
         Assertions.assertEquals(bst.getMax(), 10086);
         Assertions.assertEquals(bst.getMin(), minN);
-
 
         // 更新最后一个数
         bst.set(maxN,-1);

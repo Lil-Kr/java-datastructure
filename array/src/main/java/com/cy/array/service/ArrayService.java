@@ -1,4 +1,4 @@
-package com.cy.test.onedimensional.serviec;
+package com.cy.array.service;
 
 /**
  * @Author: Lil-K

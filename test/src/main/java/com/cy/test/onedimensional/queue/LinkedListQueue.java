@@ -1,6 +1,6 @@
 package com.cy.test.onedimensional.queue;
 
-import com.cy.test.onedimensional.linkedlist.LinkedList;
+import com.cy.test.onedimensional.linkedlist.LinkedListSingle;
 import com.cy.test.onedimensional.serviec.Queue;
 
 /**
@@ -10,39 +10,39 @@ import com.cy.test.onedimensional.serviec.Queue;
  */
 public class LinkedListQueue<E extends Comparable<E>> implements Queue<E> {
 
-    private LinkedList<E> linkedList;
+    private LinkedListSingle<E> linkedListSingle;
 
     public LinkedListQueue() {
-        linkedList = new LinkedList<>();
+        linkedListSingle = new LinkedListSingle<>();
     }
 
     @Override
     public void enqueue(E e) {
-        linkedList.addLast(e);
+        linkedListSingle.addLast(e);
     }
 
     @Override
     public E dequeue() {
-        return linkedList.removeFirst();
+        return linkedListSingle.removeFirst();
     }
 
     @Override
     public E getFront() {
-        return linkedList.getFirst();
+        return linkedListSingle.getFirst();
     }
 
     @Override
     public E getTail() {
-        return linkedList.getLast();
+        return linkedListSingle.getLast();
     }
 
     @Override
     public boolean isEmpty() {
-        return linkedList.isEmpty();
+        return linkedListSingle.isEmpty();
     }
 
     @Override
     public int getSize() {
-        return linkedList.getSize();
+        return linkedListSingle.getSize();
     }
 }
