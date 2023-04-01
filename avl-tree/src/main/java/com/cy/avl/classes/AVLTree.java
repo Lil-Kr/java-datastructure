@@ -183,6 +183,7 @@ public class AVLTree<K extends Comparable<K>, V> implements AVLService<K, V> {
 
         /**
          * 防止空指针
+         * 因为当删除节点之后, 剩下的部分是有可能为null的
          */
         if (retNode == null) {
             return null;
@@ -242,6 +243,8 @@ public class AVLTree<K extends Comparable<K>, V> implements AVLService<K, V> {
 
         return retNode;
     }
+
+
 
     /** =========================== 获取最小值 ===========================**/
     public V getMin() {
@@ -305,6 +308,21 @@ public class AVLTree<K extends Comparable<K>, V> implements AVLService<K, V> {
         x.height = Math.max(getHeight(x.left), getHeight(x.right)) + 1;
         return x;
     }
+
+    public static void main(String[] args) {
+//        String s1 = new StringBuilder("go") .append("od").toString();
+//        System.out.println(s1.intern() == s1);
+//
+//        String s2 = new StringBuilder("ja") .append("va").toString();
+//        System.out.println(s2.intern() == s2);
+
+        String s1 = "abc";
+        String s2 = new String("abc");
+        System.out.println(s1 == s2);
+        System.out.println(s1.intern() == s2);
+    }
+
+
 
     /**
      * 判断该二叉树是否是一颗平衡二叉树

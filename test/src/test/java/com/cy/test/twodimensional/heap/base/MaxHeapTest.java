@@ -13,7 +13,7 @@ import java.util.List;
 class MaxHeapTest {
 
 //    private MaxHeap<Integer> maxHeap;
-    private Heap01<Integer> maxHeap;
+    private MaxHeap<Integer> maxHeap;
 
     private int maxV = 567;
 
@@ -23,7 +23,7 @@ class MaxHeapTest {
 
     @BeforeEach
     public void init() {
-        maxHeap = new Heap01<>();
+        maxHeap = new MaxHeap<>();
     }
 
     @Test
@@ -117,7 +117,7 @@ class MaxHeapTest {
 
     @Test
     void heapify() {
-        maxHeap = new Heap01<>(initNums);
+        maxHeap = new MaxHeap<>(initNums);
         Assertions.assertEquals(maxHeap.findMax(), maxV);
 
         List<Integer> list = new ArrayList<>();
