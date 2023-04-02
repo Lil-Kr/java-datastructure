@@ -24,7 +24,6 @@ class AVLTreeTest {
 
         System.out.println("===========");
         System.out.println(avlTree);
-
     }
 
     @Test
