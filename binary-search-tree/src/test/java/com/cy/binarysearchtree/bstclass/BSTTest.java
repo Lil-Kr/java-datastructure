@@ -1,10 +1,21 @@
 package com.cy.binarysearchtree.bstclass;
 
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 @Slf4j
 class BSTTest {
+
+    private static Comparable[] nums = {5,2,4,3,8,6};
+    private static BST<Integer> bst;
+    @BeforeEach
+    public void init() {
+        bst = new BST<>();
+        for (Comparable num : nums) {
+            bst.add((int)num);
+        }
+    }
 
     @Test
     public void add_success_1() {
@@ -31,6 +42,19 @@ class BSTTest {
         bst.inOrder();
         System.out.println();
         bst.endOrder();
+    }
+
+    @Test
+    public void preOrderNR() {
+        BST<Integer> bst = new BST<>();
+        Comparable[] nums = {5,2,4,3,8,6};
+        for (Comparable num : nums) {
+            bst.add((Integer) num);
+        }
+
+        bst.preOrderNR();
+        System.out.println("\n");
+        bst.preOrder();
     }
 
     @Test

@@ -2,10 +2,7 @@ package com.cy.binarysearchtree.bstclass;
 
 import com.cy.binarysearchtree.bstclass.interfaces.BSTService;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * @Author: Lil-K
@@ -288,6 +285,27 @@ public class BST<E extends Comparable<E>> implements BSTService<E> {
         preOrder(node.left);
         preOrder(node.right);
     }
+
+    /**
+     * 前序遍历, 非递归写法
+     * 借助一个栈来实现
+     */
+    public void preOrderNR() {
+        Stack<Node> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            Node cur = stack.pop();
+            System.out.println(cur.e);
+
+            if (cur.right != null) {
+                stack.push(cur.right);
+            }
+
+            if (cur.left != null) {
+                stack.push(cur.left);
+            }
+        }
+    }
     /** =========================== end ===========================**/
 
     /** =========================== 中序遍历 start ===========================**/
@@ -344,6 +362,11 @@ public class BST<E extends Comparable<E>> implements BSTService<E> {
     /** =========================== end ===========================**/
 
     /** =========================== 层序遍历 start ===========================**/
+    /**
+     * 层序遍历, 也叫广度优先遍历
+     * 使用队列实现
+     * 意义: 常用于搜索策略
+     */
     public void levelOrder(){
         if(isEmpty())
             return;
@@ -445,7 +468,7 @@ public class BST<E extends Comparable<E>> implements BSTService<E> {
         return getMin1(root).e;
     }
 
-    private Node getMin1(Node node){
+    private Node getMin1(Node node) {
         Queue<Node> q = new LinkedList<>();
         q.add(node);
         Node min = new Node();
