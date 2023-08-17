@@ -464,7 +464,6 @@ public class BST<E extends Comparable<E>> implements BSTService<E> {
 //                min = cur;
 //            }
 //        }
-
         return getMin1(root).e;
     }
 
