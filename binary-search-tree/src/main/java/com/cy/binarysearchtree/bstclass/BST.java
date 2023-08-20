@@ -367,7 +367,7 @@ public class BST<E extends Comparable<E>> implements BSTService<E> {
      * 使用队列实现
      * 意义: 常用于搜索策略
      */
-    public void levelOrder(){
+    public void levelOrder() {
         if(isEmpty())
             return;
 
@@ -387,7 +387,7 @@ public class BST<E extends Comparable<E>> implements BSTService<E> {
     }
     /** =========================== end ===========================**/
 
-    /** =========================== 获取最大值 ===========================**/
+    /** =========================== 获取最大值 =========================== **/
     public E getMax() {
         if (size == 0){
             throw new IllegalArgumentException("BST is empty!");
@@ -415,18 +415,18 @@ public class BST<E extends Comparable<E>> implements BSTService<E> {
 
         Node max = new Node();
 
-        while (!q.isEmpty()){
+        while (!q.isEmpty()) {
             Node cur = q.remove();
 
-            if (cur.right != null){
+            if (cur.right != null) {
                 q.add(cur.right);
-            }else {
+            } else {
                 max = cur;
             }
         }
         return max.e;
     }
-    /** =========================== end ===========================**/
+    /** =========================== end =========================== **/
 
     /** =========================== 获取最小值 ===========================**/
     public E getMin() {
@@ -477,7 +477,7 @@ public class BST<E extends Comparable<E>> implements BSTService<E> {
 
             if (cur.left != null){
                 q.add(cur.left);
-            }else {
+            } else {
                 min = cur;
             }
         }
@@ -494,7 +494,6 @@ public class BST<E extends Comparable<E>> implements BSTService<E> {
     public String toString() {
         StringBuilder res = new StringBuilder();
         generateBSTString(root,0,res);
-
         return res.toString();
     }
 
@@ -503,7 +502,6 @@ public class BST<E extends Comparable<E>> implements BSTService<E> {
             res.append(generateDepthString(depth) + "null \n");
             return;
         }
-
         res.append(generateDepthString(depth) + node.e + "\n");
         generateBSTString(node.left, depth + 1, res);
         generateBSTString(node.right, depth + 1, res);
