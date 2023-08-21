@@ -12,34 +12,41 @@ import java.util.Set;
 class Trie2Test {
 
     private static Trie2 trie2;
-
+    private static List<String> strList;
 
     @BeforeEach
     public void init() {
         trie2 = new Trie2();
+        strList = new ArrayList<>();
+        strList.add("cat");
+        strList.add("dog");
+        strList.add("deer");
+        strList.add("panda");
+
+        for (String s : strList) {
+            trie2.add(s);
+        }
     }
 
     @Test
-    void add() {
-        List<String> stringList = new ArrayList<>();
-        stringList.add("cat");
-        stringList.add("cat");
-        stringList.add("dog");
-        stringList.add("deer");
-        stringList.add("panda");
-
-        for (String s : stringList) {
-            trie2.add(s);
-        }
-
-        Set<String> strSet = new HashSet<>(stringList);
-
+    public void add() {
+        strList.add("cat");
+        Set<String> strSet = new HashSet<>(strList);
         Assertions.assertEquals(strSet.size(), trie2.getSize());
-
         System.out.println();
     }
 
     @Test
-    void query() {
+    public void contains() {
+        Assertions.assertFalse(trie2.contains("c"));
+    }
+
+
+    @Test
+    public void isPrefix() {
+        Assertions.assertTrue(trie2.isPrefix("c"));
+        Assertions.assertFalse(trie2.isPrefix("cay"));
+        Assertions.assertTrue(trie2.isPrefix("cat"));
+        Assertions.assertTrue(trie2.isPrefix("panda"));
     }
 }

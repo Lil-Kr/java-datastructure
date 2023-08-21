@@ -76,9 +76,9 @@ public class Trie2 {
         }
 
         /**
-         * 此时 cur 是这个单词添加完毕之后的node,
+         * 此时 cur 是这个单词添加完毕之后的node
          * 判断最后一个节点是否是一个完整的新单词, 如果是添加重复的单词, 此时 cur.isWord == true, size也不会增加
-         * 添加一个单词完成之后, isWord 为 false,
+         * 添加一个单词完成之后, isWord 为 false
          */
         if (!cur.isWord) {
             cur.isWord = true;
@@ -100,7 +100,7 @@ public class Trie2 {
              * 如果当前字符 不包含下一个元素的映射
              * 说明在这个Trie中根本没有这个word
              */
-            if (cur.next.get(i) == null) {
+            if (cur.next.get(c) == null) {
                 return false;
             }
 
@@ -111,9 +111,31 @@ public class Trie2 {
         }
 
         /**
-         * 当
+         * 整个单词按字符循环完毕之后, 返回最后一个node的isWord
          */
         return cur.isWord;
+    }
+
+    /**
+     * 前缀匹配
+     * 查询单词是否是是前缀
+     * @param prefixWord
+     * @return
+     */
+    public boolean isPrefix(String prefixWord) {
+        Node cur = root;
+
+        for (int i = 0; i < prefixWord.length(); i++) {
+            char c = prefixWord.charAt(i);
+
+            if(cur.next.get(c) == null) {
+                return false;
+            }
+
+            cur = cur.next.get(c);
+        }
+
+        return true;
     }
 
     /**
