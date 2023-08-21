@@ -6,6 +6,13 @@ package com.cy.test.twodimensional.segmenttree;
  * @Description:
  *  * 使用数组表示线段树(represented in the form of an array)
  *  * 以求和为例, 本例子中线段树的作用是用来求和
+ *
+ *  * 常见功能实现
+ *      1. 构建线段树
+ *      2. 根据区间查询线段树
+ *      3. 单节点的更新操作
+ *      4. 根据区间的更新操作(待完成) // todo 根据区间的更新操作(待完成)
+ *
  */
 public class SegmentTree<E> implements SegmentTreeService<E> {
 
@@ -113,7 +120,7 @@ public class SegmentTree<E> implements SegmentTreeService<E> {
         int rightTreeIndex = rightChildIndex(treeIndex);
 
         /**
-         * 判断查询范围的左边界是否在当前线段树中间位置,
+         * 判断查询范围的左边界是否在当前线段树中间位置
          *  * 如果超过中间位置, 说明待查询的左边界在当前线段树中间位置之前不存在, 减小查询范围, qL >= mid + 1
          *  * 右边界同理, qR <= mid
          */
@@ -132,6 +139,38 @@ public class SegmentTree<E> implements SegmentTreeService<E> {
         return (E) merger.merge(queryL, queryR);
     }
 
+    @Override
+    public void update(int updateIndex, E e) {
+        this.checkIndex(updateIndex);
+        this.data[updateIndex] = e;
+        update(0, 0, data.length - 1, updateIndex, e);
+    }
+
+    private void update(int treeIndex, int l, int r, int updateIndex, E e) {
+        if (l == r) {
+            this.tree[treeIndex] = e;
+            return;
+        }
+
+        int mid = l + (r - l) / 2;
+
+        int leftTreeIndex = leftChildIndex(treeIndex);
+        int rightTreeIndex = rightChildIndex(treeIndex);
+
+        /**
+         * 寻找 updateIndex 这个待更新的节点在每一次递归时, 存在于整个线段树的左边还是右边
+         */
+        if(updateIndex >= mid + 1) {// 待更新的节点在右边, 接下来就直接去右边递归查找就行
+            update(rightTreeIndex, mid + 1, r, updateIndex, e);
+        }else {// updateIndex <= mid
+            update(leftTreeIndex, l, mid, updateIndex, e);
+        }
+
+        /**
+         * 需要回溯, 依次更新每一个受影响的父节点
+         */
+        this.tree[treeIndex] = (E) this.merger.merge(tree[leftTreeIndex], tree[rightTreeIndex]);
+    }
 
     @Override
     public E get(int index) {

@@ -7,22 +7,31 @@ import org.junit.jupiter.api.Test;
 @Slf4j
 class SegmentTreeTest {
 
-    private SegmentTree<Integer> segmentTree;
-
-    // [5, 8, 7, 2, 10, 2, 2]
-//    private static Integer[] nums = {-2, 0, 3, -5, 2, -1};
-    private static Integer[] nums = {5, 8, 7, 2, 10, 2, 2};
+    private static Integer[] nums = {-2, 0, 3, -5, 2, -1};
 
     @BeforeEach
     public void init() {
-        segmentTree = new SegmentTree<>(nums, (a, b) -> a + b);
-//        System.out.println(segmentTree);
+
     }
 
     @Test
-    public void test1() {
-        Integer query = segmentTree.query(3, 3);
-        System.out.println(query);
+    public void testCreateSegmentTree() {
+        SegmentTree<Integer> segmentTree = new SegmentTree<>(nums, Integer::sum);
+        System.out.println(segmentTree);
+    }
+    @Test
+    public void testQuery() {
+        SegmentTree<Integer> segmentTree = new SegmentTree<>(nums, Integer::sum);
+
+        System.out.println(segmentTree.query(2, 3));
+    }
+
+    @Test
+    public void testUpdate_1() {
+        SegmentTree<Integer> segmentTree = new SegmentTree<>(nums, Integer::sum);
+        // {-2, 0, 3, -5, 2, -1};  --> {-2, 100, 3, -5, 2, -1};
+        segmentTree.update(1, 100);
+        System.out.println(segmentTree);
     }
 
 }

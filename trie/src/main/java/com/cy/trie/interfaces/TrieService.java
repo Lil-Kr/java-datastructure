@@ -17,4 +17,6 @@ public interface TrieService {
 
     int getSize();
 
+    boolean isEmpty();
+
 }

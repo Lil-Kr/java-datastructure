@@ -109,4 +109,9 @@ public class Trie implements TrieService {
         return size;
     }
 
+    @Override
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
 }

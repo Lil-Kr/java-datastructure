@@ -54,7 +54,7 @@ public class SegmentTree<E> {
          * 不能再拆分的情况下, 这个根节点就是它本身, 上一级节点的值就是它本身
          */
         if (l == r) {
-            tree[treeIndex] = data[l];
+            this.tree[treeIndex] = data[l];
             return;
         }
 
@@ -76,7 +76,7 @@ public class SegmentTree<E> {
         buildSegmentTree(rightTreeIndex, mid + 1, r);
 
         /** 根节点的构建, 按照规则 "合并" 成根节点 **/
-        tree[treeIndex] = rule.merge(tree[leftTreeIndex], tree[rightTreeIndex]);
+        this.tree[treeIndex] = rule.merge(this.tree[leftTreeIndex], this.tree[rightTreeIndex]);
     }
 
     /**
@@ -108,7 +108,7 @@ public class SegmentTree<E> {
          * 当右边界与想要查找的右边界重合时
          */
         if(l == queryL && r == queryR) {
-            return tree[treeIndex];
+            return this.tree[treeIndex];
         }
 
         int mid = (r - l) / 2 + l;
@@ -147,7 +147,7 @@ public class SegmentTree<E> {
      * @param index
      * @param e
      */
-    public void set(int index, E e) {
+    public void update(int index, E e) {
         if (index < 0 || index >= data.length) {
             throw new IllegalArgumentException("Index is illegal");
         }
@@ -161,7 +161,7 @@ public class SegmentTree<E> {
          * 再维护线段树的性质
          * 比如父节点的merger 之后的值
          */
-        set(0, 0, data.length - 1, index, e);
+        update(0, 0, data.length - 1, index, e);
     }
 
     /**
@@ -172,13 +172,13 @@ public class SegmentTree<E> {
      * @param index
      * @param e
      */
-    private void set(int treeIndex, int l, int r, int index, E e) {
+    private void update(int treeIndex, int l, int r, int index, E e) {
         /**
          * 当左右边界相等的情况
          * 找到了
          */
         if (l == r) {
-            tree[index] = e;
+            this.tree[index] = e;
             return;
         }
 
@@ -188,10 +188,11 @@ public class SegmentTree<E> {
         int mid = l + (r - l) / 2;
         int leftTreeIndex = leftChild(treeIndex);
         int rightTreeIndex = rightChild(treeIndex);
+        
         if (index >= mid + 1) {
-            set(rightTreeIndex, mid + 1, r, index, e);
+            update(rightTreeIndex, mid + 1, r, index, e);
         }else {
-            set(leftTreeIndex, l, mid, index, e);
+            update(leftTreeIndex, l, mid, index, e);
         }
 
         /**
@@ -199,7 +200,7 @@ public class SegmentTree<E> {
          * 往上的所有父节点都会受到牵连
          * 最后需要更新父节点 聚合的结果
          */
-        tree[treeIndex] = rule.merge(tree[leftTreeIndex], tree[rightTreeIndex]);
+        this.tree[treeIndex] = rule.merge(this.tree[leftTreeIndex], this.tree[rightTreeIndex]);
     }
 
     public int getSize() {
@@ -218,14 +219,14 @@ public class SegmentTree<E> {
         StringBuilder res = new StringBuilder();
 
         res.append("[");
-        for (int i = 0; i < tree.length; i++) {
-            if (tree[i] != null) {
-                res.append(tree[i]);
+        for (int i = 0; i < this.tree.length; i++) {
+            if (this.tree[i] != null) {
+                res.append(this.tree[i]);
             }else {
                 res.append("null");
             }
 
-            if (i != tree.length - 1) {
+            if (i != this.tree.length - 1) {
                 res.append(", ");
             }
         }

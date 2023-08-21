@@ -10,6 +10,8 @@ public interface SegmentTreeService<E> {
 
     E query(int queryL, int queryR);
 
+    void update(int updateIndex, E e);
+
     E get(int index);
 
     Boolean isEmpty();
