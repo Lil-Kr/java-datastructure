@@ -26,6 +26,8 @@ class Trie2Test {
         for (String s : strList) {
             trie2.add(s);
         }
+
+        Assertions.assertEquals(strList.size(), trie2.getSize());
     }
 
     @Test
@@ -47,6 +49,6 @@ class Trie2Test {
         Assertions.assertTrue(trie2.isPrefix("c"));
         Assertions.assertFalse(trie2.isPrefix("cay"));
         Assertions.assertTrue(trie2.isPrefix("cat"));
-        Assertions.assertTrue(trie2.isPrefix("panda"));
+        Assertions.assertTrue(trie2.isPrefix("pan"));
     }
 }
