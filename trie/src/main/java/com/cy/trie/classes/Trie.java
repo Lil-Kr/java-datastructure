@@ -43,7 +43,7 @@ public class Trie implements TrieService {
      * @param word
      */
     @Override
-    public void add(String word) {
+    public void addWord(String word) {
         Node cur = root;
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
@@ -65,7 +65,7 @@ public class Trie implements TrieService {
      * @return
      */
     @Override
-    public boolean contains(String word) {
+    public boolean search(String word) {
         Node cur = root;
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);

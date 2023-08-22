@@ -5,7 +5,7 @@ import java.util.TreeMap;
 /**
  * @Author: Lil-K
  * @Date: 2023/8/21
- * @Description:
+ * @Description: Trie: 字典树
  */
 public class Trie2 {
 
@@ -31,6 +31,9 @@ public class Trie2 {
         }
     }
 
+    /**
+     * 根节点
+     */
     private Node root;
 
     /**
@@ -131,12 +134,15 @@ public class Trie2 {
             if(cur.next.get(c) == null) {
                 return false;
             }
-
             cur = cur.next.get(c);
         }
-
         return true;
     }
+
+    /**
+     * 简单模式匹配
+     */
+
 
     /**
      * 获取 Trie 中存储的单词数量
