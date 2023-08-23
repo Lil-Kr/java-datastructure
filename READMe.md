@@ -13,3 +13,5 @@
 ## array
 
 ## linked-list
+
+## BST
