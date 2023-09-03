@@ -31,7 +31,7 @@ public class QueueArray<E extends Comparable<E>> implements Queue<E> {
 
     @Override
     public E getFront() {
-        return array.get(0);
+        return array.getFirst();
     }
 
     @Override

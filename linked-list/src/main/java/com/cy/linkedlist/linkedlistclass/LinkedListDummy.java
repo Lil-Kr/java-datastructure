@@ -72,8 +72,7 @@ public class LinkedListDummy<E> {
             prev = prev.next;
         }
 
-        Node node = new Node(e, prev.next);
-        prev.next = node;
+        prev.next = new Node(e, prev.next);
         size++;
     }
 
@@ -211,6 +210,14 @@ public class LinkedListDummy<E> {
         return cur.e;
     }
 
+    public E getFirst() {
+        return this.get(0);
+    }
+
+    public E getLast() {
+        return this.get(size - 1);
+    }
+
     /**
      * 是否包含元素
      * @param e
@@ -247,16 +254,15 @@ public class LinkedListDummy<E> {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
+        StringBuilder res = new StringBuilder();
         Node cur = dummyHead.next;
+        res.append("[");
         for (int i = 0; i < size; i++) {
-            sb.append(cur.e + " -> ");
+            res.append(cur.e + " -> ");
             cur = cur.next;
         }
-        sb.append("NULL");
-        return "LinkedListDummy{" +
-                "linkedlist= " + sb +
-                ", size=" + size +
-                '}';
+        res.append("NULL");
+        res.append("]");
+        return res.toString();
     }
 }

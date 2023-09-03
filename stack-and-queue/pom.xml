@@ -4,25 +4,24 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.cy</groupId>
+        <groupId>com.cy.datastructure</groupId>
         <artifactId>java-datastructure</artifactId>
         <version>1.0.0</version>
     </parent>
 
-    <groupId>com.cy.stackandqueue</groupId>
     <artifactId>stack-and-queue</artifactId>
     <name>stack-and-queue</name>
     <version>1.0.0</version>
 
     <dependencies>
         <dependency>
-            <groupId>com.cy</groupId>
+            <groupId>com.cy.datastructure</groupId>
             <artifactId>linked-list</artifactId>
             <version>1.0.0</version>
         </dependency>
 
         <dependency>
-            <groupId>com.cy</groupId>
+            <groupId>com.cy.datastructure</groupId>
             <artifactId>array</artifactId>
             <version>1.0.0</version>
         </dependency>

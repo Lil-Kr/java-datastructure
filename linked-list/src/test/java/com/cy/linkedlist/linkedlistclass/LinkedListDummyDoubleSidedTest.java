@@ -1,178 +1,90 @@
 package com.cy.linkedlist.linkedlistclass;
 
-import com.alibaba.fastjson2.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 @Slf4j
-class LinkedListDummyDoubleSidedTest {
+class LinkedListDummyDoubleSidedTest<E> {
 
-    @Test
-    void add_1() {
-        LinkedListDummyDoubleSided list = new LinkedListDummyDoubleSided();
-        list.addLast(2);
-        list.addLast(3);
-        list.addLast(4);
-        list.addLast(5);
-        log.info(list.toString());
+    private LinkedListDummyDoubleSided<Integer> linkedListDummyDoubleSided;
+    private LinkedListDummyDoubleSided<Integer> linkedListDummyDoubleSided2 = new LinkedListDummyDoubleSided<>();
 
-        list.add(2,888);
-        log.info(list.toString());
-    }
+    private static int[] nums = {2,1,6,0,3,4};
 
-    @Test
-    void add_2() {
-        LinkedListDummyDoubleSided list = new LinkedListDummyDoubleSided();
-        list.addLast(2);
-        list.addLast(3);
-        list.addLast(4);
-        list.addLast(5);
-        list.addLast(6);
-        list.add(4,888);
-        log.info(list.toString());
-    }
+    private static String numsStr = "[2 -> 1 -> 6 -> 0 -> 3 -> 4 -> NULL]";
 
-    @Test
-    void add_3() {
-        LinkedListDummyDoubleSided list = new LinkedListDummyDoubleSided();
-        list.addLast(2);
-        list.add(1,888);
-        log.info(list.toString());
+    @BeforeEach
+    public void init() {
+        linkedListDummyDoubleSided = new LinkedListDummyDoubleSided<>();
+        for (int i = 0; i < nums.length; i++) {
+            linkedListDummyDoubleSided.add(i, nums[i]);
+        }
+//        System.out.println(linkedListDummyDoubleSided);
+        Assertions.assertEquals(nums.length, linkedListDummyDoubleSided.getSize());
     }
 
     @Test
     void addFirst() {
-        LinkedListDummyDoubleSided list = new LinkedListDummyDoubleSided();
-        list.addFirst(2);
-        list.addFirst(3);
-        list.addFirst(4);
-        list.addFirst(5);
-        list.addFirst(6);
-        list.addFirst(7);
-        log.info(list.toString());
+        linkedListDummyDoubleSided.addFirst(41);
+        linkedListDummyDoubleSided.addFirst(42);
+
+        System.out.println(linkedListDummyDoubleSided);
+        Assertions.assertEquals(nums.length + 2, linkedListDummyDoubleSided.getSize());
+        Assertions.assertEquals("[42 -> 41 -> 2 -> 1 -> 6 -> 0 -> 3 -> 4 -> NULL]", linkedListDummyDoubleSided.toString());
     }
 
     @Test
-    void addLast() {
-        LinkedListDummyDoubleSided list = new LinkedListDummyDoubleSided();
-        list.addLast(2);
-        list.addLast(3);
-        list.addLast(4);
-        list.addLast(5);
-        list.addLast(6);
-        list.addLast(7);
-        log.info(list.toString());
+    public void addLast() {
+        linkedListDummyDoubleSided.addLast(41);
+        linkedListDummyDoubleSided.addLast(42);
+
+        System.out.println(linkedListDummyDoubleSided);
+        Assertions.assertEquals(nums.length + 2, linkedListDummyDoubleSided.getSize());
+        Assertions.assertEquals("[2 -> 1 -> 6 -> 0 -> 3 -> 4 -> 41 -> 42 -> NULL]", linkedListDummyDoubleSided.toString());
     }
 
     @Test
-    void getFirst() {
-        LinkedListDummyDoubleSided list = new LinkedListDummyDoubleSided();
-        list.addLast(2);
-        list.addLast(3);
-        list.addLast(4);
-        list.addLast(5);
-        list.addLast(6);
-        list.addLast(7);
-        System.out.println(list.getFirst().toString());
+    public void getFirst() {
+        Integer first = linkedListDummyDoubleSided.getFirst();
+        Assertions.assertEquals(nums.length, linkedListDummyDoubleSided.getSize());
+        Assertions.assertEquals(numsStr, linkedListDummyDoubleSided.toString());
+        Assertions.assertEquals(first, nums[0]);
     }
 
     @Test
     void getLast() {
-        LinkedListDummyDoubleSided list = new LinkedListDummyDoubleSided();
-        list.addLast(2);
-        list.addLast(3);
-        list.addLast(4);
-        list.addLast(5);
-        list.addLast(6);
-        list.addLast(7);
-        System.out.println(list.getLast().toString());
+        Integer last = linkedListDummyDoubleSided.getLast();
+        Assertions.assertEquals(nums.length, linkedListDummyDoubleSided.getSize());
+        Assertions.assertEquals(numsStr, linkedListDummyDoubleSided.toString());
+        Assertions.assertEquals(last, nums[nums.length - 1]);
     }
 
     @Test
-    void remove_success_1() {
-
-
+    public void remove_success_1() {
+        Integer remove = linkedListDummyDoubleSided.remove(2);
+        Assertions.assertEquals(remove, nums[2]);
+        Assertions.assertEquals("[2 -> 1 -> 0 -> 3 -> 4 -> NULL]", linkedListDummyDoubleSided.toString());
+        Assertions.assertEquals(nums.length - 1, linkedListDummyDoubleSided.getSize());
     }
 
     @Test
-    void removeFirst_success_1() {
-        // 期望值
-        Object[] expect1 = {2};
-        Object expect2 = 2;
-        Object[] expect3 = {};
-
-        LinkedListDummyDoubleSided list = new LinkedListDummyDoubleSided();
-        list.addLast(2);
-        Object[] actual1 = list.getArray();
-
-        log.info("expect1 value: {}", JSON.toJSONString(expect1));
-        log.info("actual1 value: {}", JSON.toJSONString(actual1));
-        Assertions.assertArrayEquals(expect1,actual1);
-
-        Object actual2 = list.removeFirst();
-        Assertions.assertEquals(expect2,actual2);
-
-        Object[] actual3 = list.getArray();
-        Assertions.assertArrayEquals(expect3,actual3);
-    }
-
-    @Test
-    void removeFirst_success_2() {
-        // 期望值
-        Object[] expect1 = {2, 3, 4, 5, 6, 7};
-        Object[] expect2 = {3, 4, 5, 6, 7};
-        Object expect3 = 2;
-
-        LinkedListDummyDoubleSided list = new LinkedListDummyDoubleSided();
-        list.addLast(2);
-        list.addLast(3);
-        list.addLast(4);
-        list.addLast(5);
-        list.addLast(6);
-        list.addLast(7);
-        Object[] actual1 = list.getArray();
-
-        log.info("expect1 value: {}", JSON.toJSONString(expect1));
-        log.info("actual1 value: {}", JSON.toJSONString(actual1));
-        Assertions.assertArrayEquals(expect1,actual1);
-
-        Object actual3 = list.removeFirst();
-        Assertions.assertEquals(expect3,actual3);
-
-        Object[] actual2 = list.getArray();
-        log.info("expect2 value: {}", JSON.toJSONString(expect2));
-        log.info("actual2 value: {}", JSON.toJSONString(actual2));
-        Assertions.assertArrayEquals(expect2,actual2);
+    public void removeFirst_success_1() {
+        for (int i = 0; i < nums.length; i++) {
+            linkedListDummyDoubleSided.removeFirst();
+        }
+        Assertions.assertEquals(0, linkedListDummyDoubleSided.getSize());
+        Assertions.assertEquals("[NULL]", linkedListDummyDoubleSided.toString());
     }
 
     @Test
     void removeLast() {
-        // 期望值
-        Object[] expect1 = {2,3,4,5,6,7};
-        Object[] expect2 = {2,3,4,5,6};
-        Object expect3 = 7;
-
-        LinkedListDummyDoubleSided list = new LinkedListDummyDoubleSided();
-        list.addLast(2);
-        list.addLast(3);
-        list.addLast(4);
-        list.addLast(5);
-        list.addLast(6);
-        list.addLast(7);
-        Object[] actual1 = list.getArray();
-
-        log.info("expect1 value: {}", JSON.toJSONString(expect1));
-        log.info("actual1 value: {}", JSON.toJSONString(actual1));
-        Assertions.assertArrayEquals(expect1,actual1);
-
-        Object actual3 = list.removeLast();
-        Assertions.assertEquals(expect3,actual3);
-
-        Object[] actual2 = list.getArray();
-        log.info("expect2 value: {}", JSON.toJSONString(expect2));
-        log.info("actual2 value: {}", JSON.toJSONString(actual2));
-        Assertions.assertArrayEquals(expect2,actual2);
+        for (int i = 0; i < nums.length; i++) {
+            linkedListDummyDoubleSided.removeLast();
+        }
+        Assertions.assertEquals(0, linkedListDummyDoubleSided.getSize());
+        Assertions.assertEquals("[NULL]", linkedListDummyDoubleSided.toString());
     }
 
 }

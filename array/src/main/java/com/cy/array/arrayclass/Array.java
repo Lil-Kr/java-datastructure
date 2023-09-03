@@ -154,6 +154,10 @@ public class Array<E extends Comparable<E>> {
         return data[index];
     }
 
+    public E getFirst() {
+        return this.get(0);
+    }
+
     public void set(int index, E e) {
         if (index < 0 || size <= 0) {
             throw new IllegalArgumentException("index is error for Array set operation");

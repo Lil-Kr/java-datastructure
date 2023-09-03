@@ -1,206 +1,94 @@
 package com.cy.linkedlist.linkedlistclass;
 
-import com.alibaba.fastjson2.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Slf4j
-class LinkedListDummyTest {
+class LinkedListDummyTest<E> {
 
-    @Test
-    void add() {
-        // 期望值
-        Object[] expect1 = {4, 3, 33, 78};
-        Object[] expect2 = {4, 3, 6, 33, 78};
+    private LinkedListDummy<Integer> linkedListDummy;
 
-        // 实际值
-        LinkedListDummy<Integer> listDummy = new LinkedListDummy<>();
-        listDummy.addLast(4);
-        listDummy.addLast(3);
-        listDummy.addLast(33);
-        listDummy.addLast(78);
-        Object[] actual1 = listDummy.toArray();
-        Assertions.assertArrayEquals(expect1,actual1);
+    private LinkedListDummy<Integer> linkedListDummy2 = new LinkedListDummy<>();
 
-        listDummy.add(2,6);
-        Object[] actual2 = listDummy.toArray();
-        Assertions.assertArrayEquals(expect2,actual2);
+    private static int[] nums = {2,1,6,0,3,4};
 
-        log.info(listDummy.toString());
+    private static String numsStr = "[2 -> 1 -> 6 -> 0 -> 3 -> 4 -> NULL]";
+
+    @BeforeEach
+    public void init() {
+        this.linkedListDummy = new LinkedListDummy<>();
+        for (int i = 0; i < nums.length; i++) {
+            linkedListDummy.add(i, nums[i]);
+        }
+//        System.out.println(linkedListDummy);
+        Assertions.assertEquals(nums.length, linkedListDummy.getSize());
     }
 
     @Test
-    void addFirst() {
-        // 期望值
-        Object[] expect1 = {78,33,3,4};
+    public void addFirst() {
+        linkedListDummy.addFirst(41);
+        linkedListDummy.addFirst(42);
 
-        // 实际值
-        LinkedListDummy<Integer> listDummy = new LinkedListDummy<>();
-        listDummy.addFirst(4);
-        listDummy.addFirst(3);
-        listDummy.addFirst(33);
-        listDummy.addFirst(78);
-        Object[] actual1 = listDummy.toArray();
-
-        log.info("expect1 value: {}", JSON.toJSONString(expect1));
-        log.info("actual1 value: {}", JSON.toJSONString(actual1));
-        Assertions.assertArrayEquals(expect1,actual1);
+        System.out.println(linkedListDummy);
+        Assertions.assertEquals(nums.length + 2, linkedListDummy.getSize());
+        Assertions.assertEquals("[42 -> 41 -> 2 -> 1 -> 6 -> 0 -> 3 -> 4 -> NULL]", linkedListDummy.toString());
     }
 
     @Test
-    void addLast() {
-        // 期望值
-        Object[] expect1 = {78,33,3,4};
+    public void addLast() {
+        linkedListDummy.addLast(41);
+        linkedListDummy.addLast(42);
 
-        // 实际值
-        LinkedListDummy<Integer> listDummy = new LinkedListDummy<>();
-        listDummy.addLast(78);
-        listDummy.addLast(33);
-        listDummy.addLast(3);
-        listDummy.addLast(4);
-        Object[] actual1 = listDummy.toArray();
-
-        log.info("expect1 value: {}", JSON.toJSONString(expect1));
-        log.info("actual1 value: {}", JSON.toJSONString(actual1));
-        Assertions.assertArrayEquals(expect1,actual1);
+        System.out.println(linkedListDummy);
+        Assertions.assertEquals(nums.length + 2, linkedListDummy.getSize());
+        Assertions.assertEquals("[2 -> 1 -> 6 -> 0 -> 3 -> 4 -> 41 -> 42 -> NULL]", linkedListDummy.toString());
     }
 
     @Test
-    void update() {
-        // 期望值
-        Object[] expect1 = {78, 33, 3, 4};
-        Object[] expect2 = {78, 33, 21, 4};
+    public void set() {
+        linkedListDummy.set(0,100);
+        System.out.println(linkedListDummy);
+        Assertions.assertEquals(nums.length, linkedListDummy.getSize());
+        Assertions.assertEquals("[100 -> 1 -> 6 -> 0 -> 3 -> 4 -> NULL]", linkedListDummy.toString());
 
-        // 实际值
-        LinkedListDummy<Integer> listDummy = new LinkedListDummy<>();
-        listDummy.addLast(78);
-        listDummy.addLast(33);
-        listDummy.addLast(3);
-        listDummy.addLast(4);
-        Object[] actual1 = listDummy.toArray();
-        listDummy.set(2, 21);
-
-        log.info("expect1 value: {}", JSON.toJSONString(expect1));
-        log.info("actual1 value: {}", JSON.toJSONString(actual1));
-        Assertions.assertArrayEquals(expect1,actual1);
-
-        Object[] actual2 = listDummy.toArray();
-
-        log.info("expect2 value: {}", JSON.toJSONString(expect2));
-        log.info("actual2 value: {}", JSON.toJSONString(actual2));
-
-        Assertions.assertArrayEquals(expect2,actual2);
+        linkedListDummy.set(linkedListDummy.getSize() - 1,99);
+        System.out.println(linkedListDummy);
+        Assertions.assertEquals(nums.length, linkedListDummy.getSize());
+        Assertions.assertEquals("[100 -> 1 -> 6 -> 0 -> 3 -> 99 -> NULL]", linkedListDummy.toString());
     }
 
     @Test
     void remove() {
-        // 期望值
-        Object[] expect1 = {78, 33, 3, 4};
-        Object[] expect2 = {78, 3, 4};
-
-        // 实际值
-        LinkedListDummy<Integer> listDummy = new LinkedListDummy<>();
-        listDummy.addLast(78);
-        listDummy.addLast(33);
-        listDummy.addLast(3);
-        listDummy.addLast(4);
-        Object[] actual1 = listDummy.toArray();
-
-        log.info("expect1 value: {}", JSON.toJSONString(expect1));
-        log.info("actual1 value: {}", JSON.toJSONString(actual1));
-        Assertions.assertArrayEquals(expect1,actual1);
-
-        listDummy.remove(1);
-        Object[] actual2 = listDummy.toArray();
-        log.info("expect2 value: {}", JSON.toJSONString(expect2));
-        log.info("actual2 value: {}", JSON.toJSONString(actual2));
-        Assertions.assertArrayEquals(expect2,actual2);
+        linkedListDummy.remove(3);
+        System.out.println(linkedListDummy);
+        Assertions.assertEquals(nums.length - 1, linkedListDummy.getSize());
+        Assertions.assertEquals("[2 -> 1 -> 6 -> 3 -> 4 -> NULL]", linkedListDummy.toString());
     }
 
     @Test
     void removeFirst() {
-        // 期望值
-        Object[] expect1 = {78, 33, 3, 4};
-        Object[] expect2 = {33, 3, 4};
-
-        // 实际值
-        LinkedListDummy<Integer> listDummy = new LinkedListDummy<>();
-        listDummy.addLast(78);
-        listDummy.addLast(33);
-        listDummy.addLast(3);
-        listDummy.addLast(4);
-        Object[] actual1 = listDummy.toArray();
-
-        log.info("expect1 value: {}", JSON.toJSONString(expect1));
-        log.info("actual1 value: {}", JSON.toJSONString(actual1));
-        Assertions.assertArrayEquals(expect1,actual1);
-
-        listDummy.removeFirst();
-        Object[] actual2 = listDummy.toArray();
-        log.info("expect2 value: {}", JSON.toJSONString(expect2));
-        log.info("actual2 value: {}", JSON.toJSONString(actual2));
-        Assertions.assertArrayEquals(expect2,actual2);
+        linkedListDummy.removeFirst();
+        System.out.println(linkedListDummy);
+        Assertions.assertEquals(nums.length - 1, linkedListDummy.getSize());
+        Assertions.assertEquals("[1 -> 6 -> 0 -> 3 -> 4 -> NULL]", linkedListDummy.toString());
     }
 
     @Test
     void removeLast() {
-        // 期望值
-        Object[] expect1 = {78, 33, 3, 4};
-        Object[] expect2 = {78, 33, 3};
-
-        // 实际值
-        LinkedListDummy<Integer> listDummy = new LinkedListDummy<>();
-        listDummy.addLast(78);
-        listDummy.addLast(33);
-        listDummy.addLast(3);
-        listDummy.addLast(4);
-        Object[] actual1 = listDummy.toArray();
-
-        log.info("expect1 value: {}", JSON.toJSONString(expect1));
-        log.info("actual1 value: {}", JSON.toJSONString(actual1));
-        Assertions.assertArrayEquals(expect1,actual1);
-
-        listDummy.removeLast();
-        Object[] actual2 = listDummy.toArray();
-        log.info("expect2 value: {}", JSON.toJSONString(expect2));
-        log.info("actual2 value: {}", JSON.toJSONString(actual2));
-        Assertions.assertArrayEquals(expect2,actual2);
+        linkedListDummy.removeLast();
+        System.out.println(linkedListDummy);
+        Assertions.assertEquals(nums.length - 1, linkedListDummy.getSize());
+        Assertions.assertEquals("[2 -> 1 -> 6 -> 0 -> 3 -> NULL]", linkedListDummy.toString());
     }
 
     @Test
     void get() {
-        // 期望值
-        Object[] expect1 = {78, 33, 3, 4};
-
-        // 实际值
-        LinkedListDummy<Integer> listDummy = new LinkedListDummy<>();
-        listDummy.addLast(78);
-        listDummy.addLast(33);
-        listDummy.addLast(3);
-        listDummy.addLast(4);
-        Object[] actual1 = listDummy.toArray();
-
-
-        log.info("expect1 value: {}", JSON.toJSONString(expect1));
-        log.info("actual1 value: {}", JSON.toJSONString(actual1));
-        Assertions.assertArrayEquals(expect1,actual1);
-
-        Integer integer = listDummy.get(0);
-        Assertions.assertEquals(integer,78);
-
-        Integer integer2 = listDummy.get(listDummy.getSize() - 1);
-        Assertions.assertEquals(integer2,4);
-
-        Exception exception = Assertions.assertThrows(IllegalArgumentException.class, () -> listDummy.get(-1));
-        String expectedMessage = "dummyHead linkedlist add method index was error";
-        String actualMessage = exception.getMessage();
-        assertTrue(actualMessage.contains(expectedMessage));
-
-        Exception exception2 = Assertions.assertThrows(IllegalArgumentException.class, () -> listDummy.get(listDummy.getSize()));
-        String expectedMessage2 = "dummyHead linkedlist add method index was error";
-        String actualMessage2 = exception2.getMessage();
-        assertTrue(actualMessage2.contains(expectedMessage2));
+        Integer e1 = linkedListDummy.get(2);
+        System.out.println(linkedListDummy);
+        Assertions.assertEquals(nums.length, linkedListDummy.getSize());
+        Assertions.assertEquals(numsStr, linkedListDummy.toString());
+        Assertions.assertEquals(e1, nums[2]);
     }
 }

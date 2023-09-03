@@ -217,27 +217,16 @@ public class LinkedListDummyDoubleSided<E> {
 
     @Override
     public String toString() {
-        StringBuilder res1 = new StringBuilder();
+        StringBuilder res = new StringBuilder();
         Node cur = dummyHead.next;
+        res.append("[");
         for (int i = 0; i < size; i++) {
-            res1.append(cur.e + " -> ");
+            res.append(cur.e + " -> ");
             cur = cur.next;
         }
-        res1.append("NULL");
-
-        StringBuilder res2 = new StringBuilder();
-        Node reverse = dummyTail.prev;
-        for (int i = size; i > 0; i--) {
-            res2.append(reverse.e + " -> ");
-            reverse = reverse.prev;
-        }
-        res2.append("NULL");
-
-        return "LinkedListDummy{" +
-                "linkedlist order = " + res1 + "\n" +
-                ", linkedlist reverse = " + res2 + "\n" +
-                ", size=" + size +
-                '}';
+        res.append("NULL");
+        res.append("]");
+        return res.toString();
     }
 
 }
