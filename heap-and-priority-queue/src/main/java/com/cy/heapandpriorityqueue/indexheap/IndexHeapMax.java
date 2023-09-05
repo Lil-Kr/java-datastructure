@@ -1,4 +1,4 @@
-package com.cy.heapandpriorityqueue.heap;
+package com.cy.heapandpriorityqueue.indexheap;
 
 import com.cy.array.arrayclass.Array;
 import com.cy.heapandpriorityqueue.service.HeapService;
@@ -6,42 +6,30 @@ import com.cy.heapandpriorityqueue.service.HeapService;
 /**
  * @Author: Lil-K
  * @Date: 2023/2/26
- * @Description: 最大堆 底层实现
+ * @Description: 索引堆
  *
- * 堆的特性
- * 1. 堆也是一颗二叉树, 把元素码一排一排放成树的结构
- * 2. 如果堆不是一颗满二叉树, 那么不满的那部分一在树结构的右边
- * 3. 堆的底层存储可以用数组(推荐), 也可以用链表
+ * 思想:
  *
- * 需要具备的必要函数
- * 1. 计算左, 右节点的索引
- *  1.1 浪费一个数组的空间, 将元素个数和索引值对应上
- *      1.1.1 parent(i) = i/2;
- *      1.1.2 left child (i) = i * 2;
- *      1.1.3 right child (i) = (i * 2) + 1;
- *
- *  1.2 不浪费一个数组的存储空间, 索引值 = 元素个数 - 1
- *      1.2.1 parent(i) = (i - 1) / 2;
- *      1.2.2 left child (i) = (i * 2) + 1;
- *      1.2.2 right child (i) = (i * 2) + 2;
- *
- * 2. 需要设计上浮元素, 下沉元素的操作
  */
-public class MaxHeap<E extends Comparable<E>> implements HeapService<E> {
+public class IndexHeapMax<E extends Comparable<E>> implements HeapService<E> {
 
     private Array<E> datas;
+    private Integer[] indexs;
 
-    public MaxHeap() {
+    public IndexHeapMax() {
         datas = new Array<>();
+        indexs = new Integer[0];
     }
 
-    public MaxHeap(E[] arr) {
+    public IndexHeapMax(E[] arr) {
         datas = new Array<>(arr);
-        heapify(datas);
+        indexs = new Integer[arr.length];
+        heapifyIndexHeap(indexs);
     }
 
-    public MaxHeap(int capacity) {
+    public IndexHeapMax(int capacity) {
         datas = new Array<>(capacity);
+        indexs = new Integer[capacity];
     }
 
     @Override
@@ -103,7 +91,6 @@ public class MaxHeap<E extends Comparable<E>> implements HeapService<E> {
      * @param k
      */
     private void shiftDown(int k) {
-
         while (leftChildIndex(k) < datas.getSize()){
             int j = leftChildIndex(k);
 
@@ -159,11 +146,11 @@ public class MaxHeap<E extends Comparable<E>> implements HeapService<E> {
     /**
      * 将数组整理为堆的结构
      * 这个过程的复杂度为: O(n)
-     * @param array
+     * @param indexs
      */
     @Override
-    public void heapify(Array array) {
-        for (int i = parentIndex(array.getSize()-1); i >= 0; i--) {
+    public void heapifyIndexHeap(Integer[] indexs) {
+        for (int i = parentIndex(indexs.length - 1); i >= 0; i--) {
             shiftDown(i);
         }
     }

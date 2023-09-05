@@ -31,7 +31,9 @@ public interface HeapService<E> {
 
     E replace(E e);
 
-    void heapify(Array array);
+    default void heapify(Array array){}
+
+    default void heapifyIndexHeap(Integer[] indexs){}
 
     boolean isEmpty();
 
