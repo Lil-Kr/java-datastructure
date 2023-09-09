@@ -1,6 +1,6 @@
 package com.cy.avl.classes;
 
-import com.cy.binarysearchtree.bstclass.BST;
+import com.cy.binarysearchtree.bst.BST;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

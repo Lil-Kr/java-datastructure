@@ -1,4 +1,4 @@
-package com.cy.binarysearchtree.bstclass.interfaces;
+package com.cy.binarysearchtree.bst.interfaces;
 /**
  * @Author: Lil-K
  * @Date: 2023/2/23

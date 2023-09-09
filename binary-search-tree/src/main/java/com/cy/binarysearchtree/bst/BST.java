@@ -1,6 +1,6 @@
-package com.cy.binarysearchtree.bstclass;
+package com.cy.binarysearchtree.bst;
 
-import com.cy.binarysearchtree.bstclass.interfaces.BSTService;
+import com.cy.binarysearchtree.bst.interfaces.BSTService;
 
 import java.util.*;
 

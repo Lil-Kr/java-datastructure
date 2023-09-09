@@ -1,7 +1,7 @@
 package com.cy.setandmap.set.setclass;
 
 import com.alibaba.fastjson2.JSON;
-import com.cy.binarysearchtree.bstclass.BST;
+import com.cy.binarysearchtree.bst.BST;
 import com.cy.setandmap.service.SetService;
 import lombok.extern.slf4j.Slf4j;
 
