@@ -39,7 +39,6 @@ public class MaxHeap<E extends Comparable<E>> implements HeapService<E> {
         datas = new Array<>(arr);
         heapify(datas);
     }
-
     public MaxHeap(int capacity) {
         datas = new Array<>(capacity);
     }
@@ -110,8 +109,7 @@ public class MaxHeap<E extends Comparable<E>> implements HeapService<E> {
             /**
              * 获取 k 这个位置的左右子节点中最大的那个节点的索引
              */
-            if (j + 1 < datas.getSize()
-                    && datas.get(j + 1).compareTo(datas.get(j)) > 0) {
+            if (j + 1 < datas.getSize() && datas.get(j + 1).compareTo(datas.get(j)) > 0) {
                 // datas[j] 时left 和 right中的最大值
                 j ++;
             }
