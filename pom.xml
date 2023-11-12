@@ -28,6 +28,7 @@
         <module>segment-tree</module>
         <module>avl-tree</module>
         <module>trie</module>
+        <module>red-black-tree</module>
     </modules>
 
     <properties>

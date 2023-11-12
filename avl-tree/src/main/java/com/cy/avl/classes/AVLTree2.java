@@ -7,7 +7,7 @@ import com.cy.avl.interfaces.AVLService;
  * @Date: 2023/3/30
  * @Description: Map 的结构
  */
-public class AVLTree02<K extends Comparable<K>, V> implements AVLService<K, V> {
+public class AVLTree2<K extends Comparable<K>, V> implements AVLService<K, V> {
 
     private class Node {
         public K key;
@@ -32,7 +32,7 @@ public class AVLTree02<K extends Comparable<K>, V> implements AVLService<K, V> {
     private Node root;
     private int size;
 
-    public AVLTree02() {
+    public AVLTree2() {
         this.root = null;
         this.size = 0;
     }

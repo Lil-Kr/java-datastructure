@@ -244,8 +244,6 @@ public class AVLTree<K extends Comparable<K>, V> implements AVLService<K, V> {
         return retNode;
     }
 
-
-
     /** =========================== 获取最小值 ===========================**/
     public V getMin() {
         if (size == 0){
