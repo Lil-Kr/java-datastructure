@@ -246,7 +246,7 @@ public class AVLTree<K extends Comparable<K>, V> implements AVLService<K, V> {
 
     /** =========================== 获取最小值 ===========================**/
     public V getMin() {
-        if (size == 0){
+        if (size == 0) {
             throw new IllegalArgumentException("AVL is empty!");
         }
         return getMin(root).value;

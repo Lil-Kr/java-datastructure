@@ -18,15 +18,11 @@ public class RBTree<K extends Comparable<K>, V> {
         public K key;
         public V value;
         public Node left, right;
+
+        /**
+         * 表示节点的颜色
+         */
         public boolean color;
-
-        public Node() {
-            this(null,null,null,null);
-        }
-
-        public Node(K key) {
-            this(key, null,null,null);
-        }
 
         public Node(K key,V value) {
             this(key, value,null,null);
@@ -37,6 +33,9 @@ public class RBTree<K extends Comparable<K>, V> {
             this.value = value;
             this.left = left;
             this.right = right;
+            /**
+             * 默认新节点与它的父节点在2-3树中是合并在一起的
+             */
             this.color = RED;
         }
     }
