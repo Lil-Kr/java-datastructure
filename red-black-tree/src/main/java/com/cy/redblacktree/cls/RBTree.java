@@ -63,13 +63,13 @@ public class RBTree<K extends Comparable<K>, V> {
     public void add(K key, V value) {
         root = add(root, key, value);
         /**
-         * 保持最终的节点为黑节点
+         * 保持最终的根节点为黑色节点
          */
         root.color = BLACK;
     }
 
     /**
-     * 以node为根的RBTree中插入元素(k, v), 返回插入新节点后BST的根
+     * 以node为根的RBTree中插入元素(k, v), 返回插入新节点后RBTree的根
      * 递归写法
      * @param node
      * @param key
@@ -152,6 +152,10 @@ public class RBTree<K extends Comparable<K>, V> {
         }
     }
 
+    /**
+     * 删除元素
+     * @return
+     */
     public K removeMin() {
         K ret = getMin();
         /**
@@ -175,6 +179,10 @@ public class RBTree<K extends Comparable<K>, V> {
         return node;
     }
 
+    /**
+     * 过去最小元素
+     * @return
+     */
     public K getMin() {
         if (size == 0){
             throw new IllegalArgumentException("BSTMap is empty!");
@@ -245,6 +253,41 @@ public class RBTree<K extends Comparable<K>, V> {
 
     public boolean isEmpty() {
         return size == 0;
+    }
+
+    /** ===========  辅助函数  ============**/
+
+    /**
+     * 左旋转操作
+     * 返回左旋转之后, 新的node的根
+     *
+     *   node                     x
+     *  /   \     左旋转         /  \
+     * T1   x   --------->   node   T3
+     *     / \              /   \
+     *    T2 T3            T1   T2
+     * @return new node
+     */
+    private Node leftRotate(Node node) {
+        Node x = node.right;
+        // 左旋转
+        node.right = x.left;
+        x.left = node;
+
+        // 维护节点的颜色
+        x.color = node.color;
+        node.color = RED;
+        return x;
+    }
+
+    /**
+     *
+     * @param node
+     * @return
+     */
+    private Node rightRotate(Node node) {
+
+        return null;
     }
 
 }
