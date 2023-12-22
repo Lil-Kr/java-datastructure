@@ -1,9 +1,5 @@
 package com.cy.redblacktree.cls;
 
-import java.util.LinkedList;
-import java.util.Objects;
-import java.util.Queue;
-
 /**
  * @Author: Lil-K
  * @Date: 2023/11/13
@@ -18,10 +14,6 @@ public class RBTree<K extends Comparable<K>, V> {
         public K key;
         public V value;
         public Node left, right;
-
-        /**
-         * 表示节点的颜色
-         */
         public boolean color;
 
         public Node(K key,V value) {
@@ -79,15 +71,31 @@ public class RBTree<K extends Comparable<K>, V> {
     private Node add(Node node, K key, V value) {
         if (node == null) {
             size++;
+            // 返回一个红节点
             return new Node(key, value);
         }
 
         if (key.compareTo(node.key) < 0) {
             node.left = add(node.left, key, value);
-        }else if (key.compareTo(node.key) > 0){
+        }else if (key.compareTo(node.key) > 0) {
             node.right = add(node.right, key, value);
         }else { // key.compareTo(node.key) == 0
             node.value = value;
+        }
+
+        /**
+         * 维护红黑树的性质
+         */
+        if (isRed(node.right) && !isRed(node.left)) {
+            node = leftRotate(node);
+        }
+
+        if (isRed(node.left) && isRed(node.left.left)) {
+            node = rightRotate(node);
+        }
+
+        if (isRed(node.left) && isRed(node.right)) {
+            flipColors(node);
         }
 
         return node;
@@ -103,7 +111,7 @@ public class RBTree<K extends Comparable<K>, V> {
             throw new IllegalArgumentException("BST is empty!");
         }
 
-        Node del = getNode(key);
+        Node del = getNode(root, key);
         if (del == null) {
             throw new IllegalArgumentException(key + " doesn`t exist !");
         }
@@ -198,7 +206,7 @@ public class RBTree<K extends Comparable<K>, V> {
     }
 
     public boolean contains(K key) {
-        return getNode(key) != null;
+        return getNode(root,key) != null;
     }
 
     /**
@@ -207,44 +215,33 @@ public class RBTree<K extends Comparable<K>, V> {
      * @return
      */
     public V get(K key) {
-        Node node = getNode(key);
+        Node node = getNode(root, key);
         return node == null ? null : node.value;
     }
 
-    private Node getNode(K key) {
-        if(root == null) {
+    private Node getNode(Node node, K key) {
+        if(node == null)
             return null;
-        }
 
-        Queue<Node> q = new LinkedList<>();
-        q.add(root);
-        while (!q.isEmpty()) {
-            Node cur = q.remove();
-            if (cur.key.equals(key)) {
-                return cur;
-            }
-
-            if(cur.left != null) {
-                q.add(cur.left);
-            }
-            if(cur.right != null) {
-                q.add(cur.right);
-            }
-        }
-        return null;
+        if(key.equals(node.key))
+            return node;
+        else if(key.compareTo(node.key) < 0)
+            return getNode(node.left, key);
+        else // if(key.compareTo(node.key) > 0)
+            return getNode(node.right, key);
     }
 
     /**
      * 更新操作
      * @param key
-     * @param value
+     * @param newValue
      */
-    public void set(K key, V value) {
-        Node newNode = getNode(key);
-        if(Objects.isNull(newNode)) {
+    public void set(K key, V newValue) {
+        Node newNode = getNode(root, key);
+        if(newNode == null) {
             throw new IllegalArgumentException(key + " doesn`t exist !");
         }
-        newNode.value = value;
+        newNode.value = newValue;
     }
 
     public int getSize() {
@@ -281,13 +278,36 @@ public class RBTree<K extends Comparable<K>, V> {
     }
 
     /**
+     * 右旋转
      *
+     *     node                   x
+     *    /   \     右旋转       /  \
+     *   x    T2   ------->   y   node
+     *  / \                       /  \
+     * y  T1                     T1  T2
      * @param node
      * @return
      */
     private Node rightRotate(Node node) {
+        Node x = node.left;
 
-        return null;
+        node.left = x.right;
+        x.right = node;
+
+        x.color = node.color;
+        node.color = RED;
+        return x;
+    }
+
+    /**
+     * 颜色反转
+     * @param node
+     * @return
+     */
+    private void flipColors(Node node) {
+        node.color = RED;
+        node.left.color = BLACK;
+        node.right.color = BLACK;
     }
 
 }
