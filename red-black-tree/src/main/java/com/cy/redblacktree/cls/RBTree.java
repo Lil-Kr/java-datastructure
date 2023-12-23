@@ -102,12 +102,12 @@ public class RBTree<K extends Comparable<K>, V> {
     }
 
     /**
-     * 与BST 删除元素一致的操作
+     * 与 BST 删除元素一致的操作
      * @param key
      * @return
      */
     public V remove(K key) {
-        if (isEmpty()){
+        if (isEmpty()) {
             throw new IllegalArgumentException("BST is empty!");
         }
 
@@ -128,7 +128,7 @@ public class RBTree<K extends Comparable<K>, V> {
         /**
          * 寻找需要删除的位置
          */
-        if (key.compareTo(node.key) < 0) {// 操作左子节点, 寻找整颗左子树中的后继
+        if (key.compareTo(node.key) < 0) { // 操作左子节点, 寻找整颗左子树中的后继
             node.left = remove(node.left, key);
             return node;
         } else if (key.compareTo(node.key) > 0) {
@@ -220,15 +220,17 @@ public class RBTree<K extends Comparable<K>, V> {
     }
 
     private Node getNode(Node node, K key) {
-        if(node == null)
+        if(node == null) {
             return null;
+        }
 
-        if(key.equals(node.key))
+        if(key.equals(node.key)) {
             return node;
-        else if(key.compareTo(node.key) < 0)
+        } else if(key.compareTo(node.key) < 0) {
             return getNode(node.left, key);
-        else // if(key.compareTo(node.key) > 0)
+        } else { // if(key.compareTo(node.key) > 0)
             return getNode(node.right, key);
+        }
     }
 
     /**
@@ -286,7 +288,7 @@ public class RBTree<K extends Comparable<K>, V> {
      *  / \                       /  \
      * y  T1                     T1  T2
      * @param node
-     * @return
+     * @return new node
      */
     private Node rightRotate(Node node) {
         Node x = node.left;
