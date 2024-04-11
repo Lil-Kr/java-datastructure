@@ -1,7 +1,7 @@
 package com.cy.heapandpriorityqueue.indexheap;
 
 import com.cy.array.arrayclass.Array;
-import com.cy.heapandpriorityqueue.service.HeapService;
+import com.cy.heapandpriorityqueue.api.HeapService;
 
 /**
  * @Author: Lil-K

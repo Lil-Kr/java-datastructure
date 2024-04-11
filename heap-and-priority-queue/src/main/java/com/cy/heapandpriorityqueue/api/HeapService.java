@@ -1,4 +1,4 @@
-package com.cy.heapandpriorityqueue.service;
+package com.cy.heapandpriorityqueue.api;
 
 import com.cy.array.arrayclass.Array;
 
@@ -10,8 +10,6 @@ import com.cy.array.arrayclass.Array;
 public interface HeapService<E> {
 
     void add(E e);
-
-    void remove(E e);
 
     default E extractMax() {
         return null;

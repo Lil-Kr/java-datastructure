@@ -12,7 +12,6 @@ package com.cy.test.twodimensional.segmenttree;
  *      2. 根据区间查询线段树
  *      3. 单节点的更新操作
  *      4. 根据区间的更新操作(待完成) // todo 根据区间的更新操作(待完成)
- *
  */
 public class SegmentTree<E> implements SegmentTreeService<E> {
 

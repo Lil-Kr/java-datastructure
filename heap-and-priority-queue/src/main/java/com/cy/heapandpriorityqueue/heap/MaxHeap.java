@@ -1,7 +1,7 @@
 package com.cy.heapandpriorityqueue.heap;
 
 import com.cy.array.arrayclass.Array;
-import com.cy.heapandpriorityqueue.service.HeapService;
+import com.cy.heapandpriorityqueue.api.HeapService;
 
 /**
  * @Author: Lil-K
@@ -52,10 +52,10 @@ public class MaxHeap<E extends Comparable<E>> implements HeapService<E> {
          */
         int lastIndex = datas.getSize() - 1;
 
-        shiftUp(lastIndex);
+        siftUp(lastIndex);
     }
 
-    private void shiftUp(int k) {
+    private void siftUp(int k) {
         /**
          * k 大于 0 就循环,
          * k == 0 时元素在第一个位置, 此时不需要做任何操作
@@ -70,11 +70,6 @@ public class MaxHeap<E extends Comparable<E>> implements HeapService<E> {
     }
 
     @Override
-    public void remove(E e) {
-
-    }
-
-    @Override
     public E extractMax() {
         E ret = findMax();
         /**
@@ -86,7 +81,7 @@ public class MaxHeap<E extends Comparable<E>> implements HeapService<E> {
         /**
          * 此时最大堆的性质被破坏了, 需要维护堆的性质
          */
-        shiftDown(0);
+        siftDown(0);
         return ret;
     }
 
@@ -101,7 +96,7 @@ public class MaxHeap<E extends Comparable<E>> implements HeapService<E> {
      * 下沉逻辑
      * @param k
      */
-    private void shiftDown(int k) {
+    private void siftDown(int k) {
 
         while (leftChildIndex(k) < datas.getSize()){
             int j = leftChildIndex(k);
@@ -110,7 +105,7 @@ public class MaxHeap<E extends Comparable<E>> implements HeapService<E> {
              * 获取 k 这个位置的左右子节点中最大的那个节点的索引
              */
             if (j + 1 < datas.getSize() && datas.get(j + 1).compareTo(datas.get(j)) > 0) {
-                // datas[j] 时left 和 right中的最大值
+                // datas[j] 为 left 和 right中的最大值
                 j ++;
             }
 
@@ -150,7 +145,7 @@ public class MaxHeap<E extends Comparable<E>> implements HeapService<E> {
 
         // 堆顶替换成 e
         datas.set(0, e);
-        shiftDown(0);
+        siftDown(0);
         return ret;
     }
 
@@ -162,7 +157,7 @@ public class MaxHeap<E extends Comparable<E>> implements HeapService<E> {
     @Override
     public void heapify(Array array) {
         for (int i = parentIndex(array.getSize()-1); i >= 0; i--) {
-            shiftDown(i);
+            siftDown(i);
         }
     }
 

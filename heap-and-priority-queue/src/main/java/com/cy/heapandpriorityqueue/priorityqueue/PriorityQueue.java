@@ -1,7 +1,7 @@
 package com.cy.heapandpriorityqueue.priorityqueue;
 
 import com.cy.heapandpriorityqueue.heap.MaxHeap;
-import com.cy.heapandpriorityqueue.service.Queue;
+import com.cy.heapandpriorityqueue.api.Queue;
 
 /**
  * @Author: Lil-K

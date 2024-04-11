@@ -1,4 +1,4 @@
-package com.cy.heapandpriorityqueue.service;
+package com.cy.heapandpriorityqueue.api;
 
 /**
  * @Author: Lil-K
