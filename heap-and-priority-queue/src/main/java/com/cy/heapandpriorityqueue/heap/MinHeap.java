@@ -6,7 +6,7 @@ import com.cy.heapandpriorityqueue.api.HeapService;
 /**
  * @Author: Lil-K
  * @Date: 2023/3/12
- * @Description: 最小堆
+ * @Description: 最小堆 min heap
  */
 public class MinHeap<E extends Comparable<E>> implements HeapService<E> {
 
