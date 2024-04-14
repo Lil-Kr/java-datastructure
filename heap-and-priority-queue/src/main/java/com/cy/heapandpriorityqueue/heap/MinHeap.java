@@ -16,11 +16,6 @@ public class MinHeap<E extends Comparable<E>> implements HeapService<E> {
     }
 
     @Override
-    public void remove(E e) {
-
-    }
-
-    @Override
     public E extractMin() {
         return HeapService.super.extractMin();
     }

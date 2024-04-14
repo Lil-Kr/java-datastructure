@@ -59,11 +59,6 @@ public class IndexHeapMax<E extends Comparable<E>> implements HeapService<E> {
     }
 
     @Override
-    public void remove(E e) {
-
-    }
-
-    @Override
     public E extractMax() {
         E ret = findMax();
         /**
