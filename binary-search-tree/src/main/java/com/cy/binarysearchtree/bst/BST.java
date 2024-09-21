@@ -37,7 +37,7 @@ public class BST<E extends Comparable<E>> implements BSTService<E> {
 
     public BST() {
         this.root = null;
-        list = new ArrayList<>();
+        this.list = new ArrayList<>();
         this.size = 0;
     }
 
