@@ -69,7 +69,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <!-- 指定该Main Class为全局的唯一入口 -->
-                    <mainClass>com.cy.common.CommonApplication</mainClass>
+                    <mainClass>com.cy.datastructure.common.CommonApplication</mainClass>
                     <!--<layout>ZIP</layout>-->
                     <skip>true</skip>
                 </configuration>

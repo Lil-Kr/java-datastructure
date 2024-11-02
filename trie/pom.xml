@@ -69,7 +69,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <!-- 指定该Main Class为全局的唯一入口 -->
-                    <mainClass>com.cy.trie.TrieApplication</mainClass>
+                    <mainClass>com.cy.datastructure.trie.TrieApplication</mainClass>
                     <!--common 不需要可执行jar-->
                     <skip>true</skip>
                 </configuration>

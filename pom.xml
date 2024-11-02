@@ -29,6 +29,7 @@
         <module>avl-tree</module>
         <module>trie</module>
         <module>red-black-tree</module>
+        <module>b-tree</module>
     </modules>
 
     <properties>
