@@ -7,6 +7,6 @@ package com.cy.datastructure.segmenttree.interfaces;
  */
 public interface Rule<E> {
 
-    E merge(E a, E b);
+  E merge(E a, E b);
 
 }

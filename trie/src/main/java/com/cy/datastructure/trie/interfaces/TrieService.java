@@ -7,18 +7,18 @@ package com.cy.datastructure.trie.interfaces;
  */
 public interface TrieService {
 
-    void addWord(String word);
+  void addWord(String word);
 
-    void remove(String word);
+  void remove(String word);
 
-    boolean search(String word);
+  boolean search(String word);
 
-    boolean isPrefix(String prefix);
+  boolean isPrefix(String prefix);
 
 
 
-    int getSize();
+  int getSize();
 
-    boolean isEmpty();
+  boolean isEmpty();
 
 }

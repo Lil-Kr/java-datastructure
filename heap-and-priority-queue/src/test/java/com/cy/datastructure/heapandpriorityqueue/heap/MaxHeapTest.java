@@ -5,17 +5,17 @@ import org.junit.jupiter.api.Test;
 
 class MaxHeapTest {
 
-    private MaxHeap maxHeap;
+  private MaxHeap maxHeap;
 
-    @BeforeEach
-    public void init() {
-        maxHeap = new MaxHeap<>();
-    }
+  @BeforeEach
+  public void init() {
+    maxHeap = new MaxHeap<>();
+  }
 
 
-    @Test
-    public void test_1() {
+  @Test
+  public void test_1() {
 
-    }
+  }
 
 }

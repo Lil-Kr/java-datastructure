@@ -8,13 +8,13 @@ package com.cy.datastructure.test.twodimensional.segmenttree;
 public interface SegmentTreeService<E> {
 
 
-    E query(int queryL, int queryR);
+  E query(int queryL, int queryR);
 
-    void update(int updateIndex, E e);
+  void update(int updateIndex, E e);
 
-    E get(int index);
+  E get(int index);
 
-    Boolean isEmpty();
+  Boolean isEmpty();
 
-    int getSize();
+  int getSize();
 }

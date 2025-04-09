@@ -8,37 +8,37 @@ package com.cy.datastructure.test.twodimensional.heap.service;
  */
 public interface HeapService<E> {
 
-    /**
-     * 添加元素
-     * @param e
-     */
-    void add(E e);
+  /**
+   * 添加元素
+   * @param e
+   */
+  void add(E e);
 
-    /**
-     * 查看最小的元素
-     * @return
-     */
-    default E findMin(){
-        return null;
-    }
+  /**
+   * 查看最小的元素
+   * @return
+   */
+  default E findMin(){
+    return null;
+  }
 
-    default E findMax() {
-        return null;
-    }
-    default E extractMax() {
-        return null;
-    }
+  default E findMax() {
+    return null;
+  }
+  default E extractMax() {
+    return null;
+  }
 
-    default E extractMin() {
-        return null;
-    }
+  default E extractMin() {
+    return null;
+  }
 
-    E replace(E e);
+  E replace(E e);
 
-    void heapify(E[] arr);
+  void heapify(E[] arr);
 
-    boolean isEmpty();
+  boolean isEmpty();
 
-    int getSize();
+  int getSize();
 
 }

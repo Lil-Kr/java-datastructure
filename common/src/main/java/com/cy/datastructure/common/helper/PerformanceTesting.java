@@ -8,9 +8,9 @@ package com.cy.datastructure.common.helper;
 public class PerformanceTesting {
 
 
-    public int test(){
-        return 1;
-    }
+  public int test(){
+    return 1;
+  }
 
 
 

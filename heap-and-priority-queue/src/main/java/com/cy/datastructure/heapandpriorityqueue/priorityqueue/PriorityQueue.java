@@ -10,38 +10,38 @@ import com.cy.datastructure.heapandpriorityqueue.api.Queue;
  */
 public class PriorityQueue<E extends Comparable<E>> implements Queue<E> {
 
-    private MaxHeap<E> maxHeap;
+  private MaxHeap<E> maxHeap;
 
-    public PriorityQueue() {
-        maxHeap = new MaxHeap<>();
-    }
+  public PriorityQueue() {
+    maxHeap = new MaxHeap<>();
+  }
 
-    /**
-     * 入队
-     * @param e
-     */
-    @Override
-    public void enqueue(E e) {
-        maxHeap.add(e);
-    }
+  /**
+   * 入队
+   * @param e
+   */
+  @Override
+  public void enqueue(E e) {
+    maxHeap.add(e);
+  }
 
-    @Override
-    public E dequeue() {
-        return maxHeap.extractMax();
-    }
+  @Override
+  public E dequeue() {
+    return maxHeap.extractMax();
+  }
 
-    @Override
-    public E getFront() {
-        return maxHeap.findMax();
-    }
+  @Override
+  public E getFront() {
+    return maxHeap.findMax();
+  }
 
-    @Override
-    public int getSize() {
-        return maxHeap.getSize();
-    }
+  @Override
+  public int getSize() {
+    return maxHeap.getSize();
+  }
 
-    @Override
-    public boolean isEmpty() {
-        return maxHeap.isEmpty();
-    }
+  @Override
+  public boolean isEmpty() {
+    return maxHeap.isEmpty();
+  }
 }

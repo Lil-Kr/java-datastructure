@@ -9,15 +9,15 @@ import java.util.List;
  */
 public interface SetService<E> {
 
-    void add(E e);
+  void add(E e);
 
-    void remove(E e);
+  void remove(E e);
 
-    boolean contains(E e);
+  boolean contains(E e);
 
-    List<E> getSetBSTs();
+  List<E> getSetBSTs();
 
-    int getSize();
+  int getSize();
 
-    boolean isEmpty();
+  boolean isEmpty();
 }

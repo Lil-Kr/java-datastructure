@@ -5,8 +5,8 @@
 <!-- code_chunk_output -->
 
 - [Java-Data-Structure](#-java-data-structure-)
-  - [array](#-array-)
-  - [linked-list](#-linked-list)
+	- [array](#-array-)
+	- [linked-list](#-linked-list)
 
 <!-- /code_chunk_output -->
 

@@ -15,47 +15,47 @@ import java.util.List;
 @Slf4j
 public class SetBST<E extends Comparable<E>> implements SetService<E> {
 
-    private BST<E> bst;
+  private BST<E> bst;
 
-    public SetBST(){
-        bst = new BST();
-    }
+  public SetBST(){
+    bst = new BST();
+  }
 
-    @Override
-    public void add(E e) {
-        bst.add(e);
-    }
+  @Override
+  public void add(E e) {
+    bst.add(e);
+  }
 
-    @Override
-    public void remove(E e) {
-        bst.remove(e);
-    }
+  @Override
+  public void remove(E e) {
+    bst.remove(e);
+  }
 
-    @Override
-    public boolean contains(E e) {
-        return bst.contains(e);
-    }
+  @Override
+  public boolean contains(E e) {
+    return bst.contains(e);
+  }
 
-    @Override
-    public List<E> getSetBSTs() {
-        return bst.getBSTListByInOrder();
-    }
+  @Override
+  public List<E> getSetBSTs() {
+    return bst.getBSTListByInOrder();
+  }
 
-    @Override
-    public int getSize() {
-        return bst.getSize();
-    }
+  @Override
+  public int getSize() {
+    return bst.getSize();
+  }
 
-    @Override
-    public boolean isEmpty() {
-        return bst.isEmpty();
-    }
+  @Override
+  public boolean isEmpty() {
+    return bst.isEmpty();
+  }
 
-    @Override
-    public String toString() {
-        return "SetBST{" +
-                "size=" + getSize() +
-                ", set-bst-list=" + JSON.toJSONString(getSetBSTs()) +
-                '}';
-    }
+  @Override
+  public String toString() {
+    return "SetBST{" +
+      "size=" + getSize() +
+      ", set-bst-list=" + JSON.toJSONString(getSetBSTs()) +
+      '}';
+  }
 }

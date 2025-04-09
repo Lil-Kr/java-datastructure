@@ -1,6 +1,6 @@
 package com.cy.datastructure.heapandpriorityqueue.heap;
 
-import com.cy.datastructure.datastructure.btree.array.arrayclass.Array;
+import com.cy.datastructure.array.Array;
 import com.cy.datastructure.heapandpriorityqueue.api.HeapService;
 
 /**

@@ -7,13 +7,13 @@ package com.cy.datastructure.stackandqueue.queueclass;
  */
 public interface Queue<E> {
 
-    void enqueue(E e);
+  void enqueue(E e);
 
-    E dequeue();
+  E dequeue();
 
-    E getFront();
+  E getFront();
 
-    int getSize();
+  int getSize();
 
-    boolean isEmpty();
+  boolean isEmpty();
 }

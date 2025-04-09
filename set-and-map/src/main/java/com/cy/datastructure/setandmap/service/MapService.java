@@ -7,17 +7,17 @@ package com.cy.datastructure.setandmap.service;
  */
 public interface MapService<K, V> {
 
-    void add(K key, V value);
+  void add(K key, V value);
 
-    V remove(K key);
+  V remove(K key);
 
-    boolean contains(K key);
+  boolean contains(K key);
 
-    V get(K key);
+  V get(K key);
 
-    void set(K key, V value);
+  void set(K key, V value);
 
-    int getSize();
+  int getSize();
 
-    boolean isEmpty();
+  boolean isEmpty();
 }

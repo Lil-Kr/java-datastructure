@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class BinarySearchTreeApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(BinarySearchTreeApplication.class);
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(BinarySearchTreeApplication.class);
+  }
 }

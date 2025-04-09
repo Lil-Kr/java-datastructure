@@ -10,11 +10,11 @@ import java.util.Objects;
  * @Description:
  */
 public class SumMergerImpl<E> implements Merger<Integer> {
-    @Override
-    public Integer merge(Integer a, Integer b) {
-        if (Objects.isNull(a) || Objects.isNull(b)) {
-            return 0;
-        }
-        return a + b;
+  @Override
+  public Integer merge(Integer a, Integer b) {
+    if (Objects.isNull(a) || Objects.isNull(b)) {
+      return 0;
     }
+    return a + b;
+  }
 }

@@ -3,17 +3,17 @@ package com.cy.datastructure.heapandpriorityqueue.api;
 /**
  * @Author: Lil-K
  * @Date: 2023/2/22
- * @Description: 
+ * @Description:
  */
 public interface Queue<E> {
 
-    void enqueue(E e);
+  void enqueue(E e);
 
-    E dequeue();
+  E dequeue();
 
-    E getFront();
+  E getFront();
 
-    int getSize();
+  int getSize();
 
-    boolean isEmpty();
+  boolean isEmpty();
 }

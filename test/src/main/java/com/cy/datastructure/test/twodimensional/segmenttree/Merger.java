@@ -8,5 +8,5 @@ package com.cy.datastructure.test.twodimensional.segmenttree;
 @FunctionalInterface
 public interface Merger<E> {
 
-    E merge(E a, E b);
+  E merge(E a, E b);
 }

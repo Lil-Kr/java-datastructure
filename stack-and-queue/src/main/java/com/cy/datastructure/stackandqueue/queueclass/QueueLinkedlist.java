@@ -9,34 +9,34 @@ import com.cy.datastructure.linkedlist.linkedlistclass.LinkedListDummy;
  */
 public class QueueLinkedlist<E> implements Queue<E> {
 
-    private LinkedListDummy linkedList;
+  private LinkedListDummy linkedList;
 
-    public QueueLinkedlist() {
-        linkedList = new LinkedListDummy();
-    }
+  public QueueLinkedlist() {
+    linkedList = new LinkedListDummy();
+  }
 
-    @Override
-    public void enqueue(E e) {
-        linkedList.addLast(e);
-    }
+  @Override
+  public void enqueue(E e) {
+    linkedList.addLast(e);
+  }
 
-    @Override
-    public E dequeue() {
-        return (E) linkedList.removeFirst();
-    }
+  @Override
+  public E dequeue() {
+    return (E) linkedList.removeFirst();
+  }
 
-    @Override
-    public E getFront() {
-        return (E) linkedList.get(0);
-    }
+  @Override
+  public E getFront() {
+    return (E) linkedList.get(0);
+  }
 
-    @Override
-    public int getSize() {
-        return linkedList.getSize();
-    }
+  @Override
+  public int getSize() {
+    return linkedList.getSize();
+  }
 
-    @Override
-    public boolean isEmpty() {
-        return linkedList.isEmpty();
-    }
+  @Override
+  public boolean isEmpty() {
+    return linkedList.isEmpty();
+  }
 }

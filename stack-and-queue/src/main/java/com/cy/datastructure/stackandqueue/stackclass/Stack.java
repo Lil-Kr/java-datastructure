@@ -7,13 +7,13 @@ package com.cy.datastructure.stackandqueue.stackclass;
  */
 public interface Stack<E> {
 
-    void push(E e);
+  void push(E e);
 
-    E pop();
+  E pop();
 
-    int getSize();
+  int getSize();
 
-    E peek();
+  E peek();
 
-    boolean isEmpty();
+  boolean isEmpty();
 }

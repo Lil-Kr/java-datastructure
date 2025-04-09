@@ -1,6 +1,6 @@
 package com.cy.datastructure.stackandqueue.stackclass;
 
-import com.cy.datastructure.datastructure.btree.array.arrayclass.Array;
+import com.cy.datastructure.array.Array;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -14,38 +14,38 @@ import org.springframework.stereotype.Service;
 
 public class StackArray<E extends Comparable<E>> implements Stack<E>{
 
-    private Array<E> array;
+  private Array<E> array;
 
-    public StackArray() {
-        array = new Array();
-    }
+  public StackArray() {
+    array = new Array();
+  }
 
-    @Override
-    public void push(E e) {
-        array.addLast(e);
-    }
+  @Override
+  public void push(E e) {
+    array.addLast(e);
+  }
 
-    @Override
-    public E pop() {
-        return (E) array.removeLast();
-    }
+  @Override
+  public E pop() {
+    return (E) array.removeLast();
+  }
 
-    @Override
-    public int getSize() {
-        return array.getSize();
-    }
+  @Override
+  public int getSize() {
+    return array.getSize();
+  }
 
-    @Override
-    public E peek() {
-        return (E) array.get(array.getSize()-1);
-    }
+  @Override
+  public E peek() {
+    return (E) array.get(array.getSize()-1);
+  }
 
-    @Override
-    public boolean isEmpty() {
-        return array.getSize() == 0;
-    }
+  @Override
+  public boolean isEmpty() {
+    return array.getSize() == 0;
+  }
 
-    public E[] getStackArray() {
-        return (E[]) array.getArray();
-    }
+  public E[] getStackArray() {
+    return (E[]) array.getArray();
+  }
 }

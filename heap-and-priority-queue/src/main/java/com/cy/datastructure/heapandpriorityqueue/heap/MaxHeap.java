@@ -1,6 +1,6 @@
 package com.cy.datastructure.heapandpriorityqueue.heap;
 
-import com.cy.datastructure.datastructure.btree.array.arrayclass.Array;
+import com.cy.datastructure.array.Array;
 import com.cy.datastructure.heapandpriorityqueue.api.HeapService;
 
 /**
@@ -19,6 +19,7 @@ public class MaxHeap<E extends Comparable<E>> implements HeapService<E> {
 		datas = new Array<>(arr);
 		heapify(datas);
 	}
+
 	public MaxHeap(int capacity) {
 		datas = new Array<>(capacity);
 	}

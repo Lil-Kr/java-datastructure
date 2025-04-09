@@ -7,15 +7,15 @@ package com.cy.datastructure.test.twodimensional.serviece;
  */
 public interface AVLService<K, V> {
 
-    void add(K key, V value);
+  void add(K key, V value);
 
-    void remove(K key);
+  void remove(K key);
 
-    K getMin();
+  K getMin();
 
-    K getMax();
+  K getMax();
 
-    boolean isEmpty();
+  boolean isEmpty();
 
-    int getSize();
+  int getSize();
 }

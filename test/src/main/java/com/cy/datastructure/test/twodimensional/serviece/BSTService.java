@@ -7,33 +7,33 @@ package com.cy.datastructure.test.twodimensional.serviece;
  */
 public interface BSTService<E> {
 
-    void add(E e);
+  void add(E e);
 
-    E getMin();
+  E getMin();
 
-    E getMax();
+  E getMax();
 
-    void remove(E e);
+  void remove(E e);
 
-    E removeMin();
+  E removeMin();
 
-    E removeMax();
+  E removeMax();
 
-    void set(E oldV, E newV);
+  void set(E oldV, E newV);
 
-    boolean contain(E e);
+  boolean contain(E e);
 
-    void preOrder();
+  void preOrder();
 
-    void preOrderNR();
+  void preOrderNR();
 
-    void inOrder();
+  void inOrder();
 
-    void endOrder();
+  void endOrder();
 
-    void levelOrder();
+  void levelOrder();
 
-    int getSize();
+  int getSize();
 
-    boolean isEmpty();
+  boolean isEmpty();
 }

@@ -1,6 +1,6 @@
 package com.cy.datastructure.heapandpriorityqueue.api;
 
-import com.cy.datastructure.datastructure.btree.array.arrayclass.Array;
+import com.cy.datastructure.array.Array;
 
 /**
  * @Author: Lil-K
@@ -9,31 +9,31 @@ import com.cy.datastructure.datastructure.btree.array.arrayclass.Array;
  */
 public interface HeapService<E> {
 
-    void add(E e);
+  void add(E e);
 
-    default E extractMax() {
-        return null;
-    }
+  default E extractMax() {
+    return null;
+  }
 
-    default E extractMin() {
-        return null;
-    }
+  default E extractMin() {
+    return null;
+  }
 
-    default E findMin(){
-        return null;
-    }
+  default E findMin(){
+    return null;
+  }
 
-    default E findMax() {
-        return null;
-    }
+  default E findMax() {
+    return null;
+  }
 
-    E replace(E e);
+  E replace(E e);
 
-    default void heapify(Array array){}
+  default void heapify(Array array){}
 
-    default void heapifyIndexHeap(Integer[] indexs){}
+  default void heapifyIndexHeap(Integer[] indexs){}
 
-    boolean isEmpty();
+  boolean isEmpty();
 
-    int getSize();
+  int getSize();
 }

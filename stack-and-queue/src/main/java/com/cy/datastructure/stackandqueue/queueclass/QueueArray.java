@@ -1,6 +1,6 @@
 package com.cy.datastructure.stackandqueue.queueclass;
 
-import com.cy.datastructure.datastructure.btree.array.arrayclass.Array;
+import com.cy.datastructure.array.Array;
 
 /**
  * @Author: Lil-K
