@@ -1,25 +1,23 @@
-English | [简体中文](./README.zh.md)
+[English](./README.md) | 简体中文
 
-# Introduction
+# 介绍
 
-- This is a personal notes repository, recording the process of learning data structures.
-- All data structures are implemented from scratch in **Java**.
+* 这是一个笔记仓库, 记录了学习数据结构的过程
+* 使用JAVA语言从底层实现了主流且重要的数据结构
 
-## Implemented Data Structures
+## 实现的数据结构如下
 
-- Dynamic Array
-- Linked List, Doubly Linked List
-- Stack, Queue, Heap, Priority Queue
-- Binary Search Tree
-- Segment Tree, Trie
-- Balanced Trees: AVL Tree, Red-Black Tree (insertion operations)
-- Hash Table
+* 动态数组
+* 链表, 双向列表
+* 栈, 队列, 堆, 优先队列
+* 二分搜索树
+* 线段树, 字典树
+* 平衡树: AVL-Tree, 红黑树(添加操作)
+* 哈希表
 
----
+## 目录结构
 
-## Project Structure
-
-```plaintext
+```
 .
 ├── array/
 │   └── src/
@@ -44,7 +42,8 @@ English | [简体中文](./README.zh.md)
 ├── heap-and-priority-queue/
 │   └── src/
 │       └── main/
-│           └── java/com/cy/datastructure/heapandpriorityqueue/
+│           └── java/com/cy/datastructure/
+│               └── heapandpriorityqueue/
 ├── linked-list/
 │   └── src/
 │       └── main/
@@ -71,3 +70,15 @@ English | [简体中文](./README.zh.md)
     └── src/
         └── main/
             └── java/com/cy/datastructure/trie/
+```
+
+> 每种结构都写了相应的测试
+> 
+
+--------------
+
+## 未来规划
+
+* 实现更多的数据结构
+* 完善每种数据结构的测试用例和文档说明
+* 可能会考虑出一个`TypeScript`版本的数据结构代码仓库
