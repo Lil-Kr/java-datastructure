@@ -71,3 +71,14 @@ English | [简体中文](./README.zh.md)
     └── src/
         └── main/
             └── java/com/cy/datastructure/trie/
+```
+
+> Test cases are written for each structure
+
+--------------
+
+## Future Plans
+
+* Implement more data structures
+* Improve test coverage and add documentation for each data structure
+* Consider creating a TypeScript version of the data structures repository
