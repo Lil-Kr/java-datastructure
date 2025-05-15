@@ -10,146 +10,146 @@ import com.cy.datastructure.linkedlist.service.LinkedListService;
 public class LinkedListLoopDummyDoubleSided<E> implements LinkedListService<E> {
 
 
-    private class Node {
-        public E e;
-        public Node next, prev;
+  private class Node {
+    public E e;
+    public Node next, prev;
 
-        public Node() {
-            this(null,null,null);
-        }
-
-        public Node(E e){
-            this(e,null,null);
-        }
-
-        public Node(E e, Node prev, Node next) {
-            this.e = e;
-            this.prev = prev;
-            this.next = next;
-        }
-
-        @Override
-        public String toString() {
-            return "Node{" +
-                    "e=" + e +
-                    ", next=" + next +
-                    ", prev=" + prev +
-                    '}';
-        }
+    public Node() {
+      this(null,null,null);
     }
 
-    private Node dummyHead;
+    public Node(E e){
+      this(e,null,null);
+    }
 
-    private int size;
+    public Node(E e, Node prev, Node next) {
+      this.e = e;
+      this.prev = prev;
+      this.next = next;
+    }
 
-    public LinkedListLoopDummyDoubleSided() {
-        dummyHead = new Node();
-        size = 0;
+    @Override
+    public String toString() {
+      return "Node{" +
+        "e=" + e +
+        ", next=" + next +
+        ", prev=" + prev +
+        '}';
+    }
+  }
+
+  private Node dummyHead;
+
+  private int size;
+
+  public LinkedListLoopDummyDoubleSided() {
+    dummyHead = new Node();
+    size = 0;
+  }
+
+  /**
+   * 循环双向链表添加元素
+   * dummyHead.next -> 首
+   * dummyHead.perv -> 尾
+   * @param index
+   * @param e
+   */
+  @Override
+  public void add(int index, E e) {
+    if (index < 0 || index > size) {
+      throw new IllegalArgumentException("double loop linked list index is error");
     }
 
     /**
-     * 循环双向链表添加元素
-     * dummyHead.next -> 首
-     * dummyHead.perv -> 尾
-     * @param index
-     * @param e
+     * 计算index与首尾距离大小,
+     * 判断从头部开始还是尾部开始
      */
-    @Override
-    public void add(int index, E e) {
-        if (index < 0 || index > size) {
-            throw new IllegalArgumentException("double loop linked list index is error");
-        }
+    Node prev = dummyHead;
+    Node node = new Node(e);
+    if (size == 0) {
+      prev.next = node;
+      prev.prev = node;
 
-        /**
-         * 计算index与首尾距离大小,
-         * 判断从头部开始还是尾部开始
-         */
-        Node prev = dummyHead;
-        Node node = new Node(e);
-        if (size == 0) {
-            prev.next = node;
-            prev.prev = node;
+      node.prev = prev;
+      node.next = prev;
+    } else if (index <= (size >> 1)) {
 
-            node.prev = prev;
-            node.next = prev;
-        } else if (index <= (size >> 1)) {
+      for (int i = 0; i < index; i++) {
+        prev = prev.next;
+      }
+      node.next = prev.next;
+      node.prev = prev;
 
-            for (int i = 0; i < index; i++) {
-                prev = prev.next;
-            }
-            node.next = prev.next;
-            node.prev = prev;
-
-            dummyHead.prev = prev.next;
+      dummyHead.prev = prev.next;
 //            prev.next;
-        }else {
-        }
-
-        size++;
+    }else {
     }
 
-    public void addFirst(E e){
-        this.add(0, e);
-    }
+    size++;
+  }
 
-    public void addLast(E e){
-        this.add(size - 1, e);
-    }
+  public void addFirst(E e){
+    this.add(0, e);
+  }
 
-    @Override
-    public E remove(int index) {
-        return null;
-    }
+  public void addLast(E e){
+    this.add(size - 1, e);
+  }
 
-    public E removeFirst() {
-        return this.remove(0);
-    }
+  @Override
+  public E remove(int index) {
+    return null;
+  }
 
-    public E removeLast() {
-        return this.remove(size-1);
-    }
+  public E removeFirst() {
+    return this.remove(0);
+  }
 
-    @Override
-    public E get(int index) {
-        return null;
-    }
+  public E removeLast() {
+    return this.remove(size-1);
+  }
 
-    public E getLast(){
-        if (isEmpty()) {
-            return null;
-        }
-        return dummyHead.prev.e;
-    }
+  @Override
+  public E get(int index) {
+    return null;
+  }
 
-    public E getFirst(){
-        if (isEmpty()) {
-            return null;
-        }
-        return dummyHead.next.e;
+  public E getLast(){
+    if (isEmpty()) {
+      return null;
     }
+    return dummyHead.prev.e;
+  }
 
-    @Override
-    public void set(int index, E e) {
-
+  public E getFirst(){
+    if (isEmpty()) {
+      return null;
     }
+    return dummyHead.next.e;
+  }
 
-    @Override
-    public boolean contain() {
-        return false;
-    }
+  @Override
+  public void set(int index, E e) {
 
-    @Override
-    public int getSize() {
-        return size;
-    }
+  }
 
-    @Override
-    public boolean isEmpty() {
-        return size == 0;
-    }
+  @Override
+  public boolean contain() {
+    return false;
+  }
 
-    @Override
-    public E[] toArray() {
-        return null;
-    }
+  @Override
+  public int getSize() {
+    return size;
+  }
+
+  @Override
+  public boolean isEmpty() {
+    return size == 0;
+  }
+
+  @Override
+  public E[] toArray() {
+    return null;
+  }
 }

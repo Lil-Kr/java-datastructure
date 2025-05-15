@@ -7,19 +7,19 @@ package com.cy.datastructure.linkedlist.service;
  */
 public interface LinkedListService<E> {
 
-    void add(int index, E e);
+  void add(int index, E e);
 
-    E remove(int index);
+  E remove(int index);
 
-    E get(int index);
+  E get(int index);
 
-    void set(int index, E e);
+  void set(int index, E e);
 
-    boolean contain();
+  boolean contain();
 
-    int getSize();
+  int getSize();
 
-    boolean isEmpty();
+  boolean isEmpty();
 
-    E[] toArray();
+  E[] toArray();
 }
