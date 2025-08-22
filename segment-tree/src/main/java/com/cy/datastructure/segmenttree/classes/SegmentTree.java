@@ -43,7 +43,7 @@ public class SegmentTree<E> {
   }
 
   /**
-   * 在treeIndex 的位置创建表示区间 [l ... r] 的线段树
+   * 在 treeIndex 的位置创建表示区间 [l ... r] 的线段树
    * @param treeIndex
    * @param l
    * @param r
