@@ -37,7 +37,7 @@ public class Trie2 {
   private Node root;
 
   /**
-   * 表示在Trie中有多少个单词
+   * 表示在 Trie 中有多少个单词
    */
   private int size;
 
@@ -57,7 +57,7 @@ public class Trie2 {
 
     /**
      * 通过for循环添加单词字符
-     * 当跳出循环之后, 表示这个单词按字符的形式已经添加完成了,
+     * 当跳出循环之后, 表示这个单词按字符的形式已经添加完成了
      */
     for(int i = 0; i < word.length(); i++) {
       /**
