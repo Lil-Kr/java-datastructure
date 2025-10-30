@@ -30,6 +30,7 @@
 		<module>trie</module>
 		<module>red-black-tree</module>
 		<module>b-tree</module>
+		<module>graph</module>
 	</modules>
 
 	<properties>

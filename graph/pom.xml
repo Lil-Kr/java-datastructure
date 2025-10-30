@@ -1,7 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.cy.datastructure</groupId>
@@ -9,8 +7,8 @@
 		<version>1.0.0</version>
 	</parent>
 
-	<artifactId>array</artifactId>
-	<name>array</name>
+	<artifactId>graph</artifactId>
+	<name>graph</name>
 	<version>1.0.0</version>
 
 	<dependencies>
@@ -73,7 +71,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<!-- 指定该Main Class为全局的唯一入口 -->
-					<mainClass>com.cy.datastructure.array.ArrayApplication</mainClass>
+					<mainClass>com.cy.datastructure.graph.GraphApplication</mainClass>
 					<!--<layout>ZIP</layout>-->
 					<skip>true</skip>
 				</configuration>
