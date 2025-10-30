@@ -71,7 +71,7 @@ public class AdjTreeSet {
     return adj[v].contains(w);
   }
 
-  public TreeSet<Integer> adj(int v) {
+  public Iterable<Integer> adj(int v) {
     validateVertex(v);
     return adj[v];
   }
@@ -82,7 +82,8 @@ public class AdjTreeSet {
    * @return
    */
   public int degree(int v) {
-    return adj(v).size();
+    validateVertex(v);
+    return adj[v].size();
   }
 
   @Override
