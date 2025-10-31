@@ -1,7 +1,6 @@
 package com.cy.datastructure.graph.adjlist;
 
 import com.alibaba.fastjson2.JSONArray;
-
 import java.util.TreeSet;
 
 /**
@@ -10,7 +9,8 @@ import java.util.TreeSet;
  * @Description:
  * 图的表示: 改进邻接表
  */
-public class AdjTreeSet {
+public class Graph {
+
   // how many vertex
   private int V;
   // how many edge
@@ -18,13 +18,13 @@ public class AdjTreeSet {
 
   private TreeSet<Integer>[] adj;
 
-  public AdjTreeSet() {}
+  public Graph() {}
 
-  public AdjTreeSet(String filename) {
+  public Graph(String filename) {
 
   }
 
-  public AdjTreeSet(String[][] arr) {
+  public Graph(String[][] arr) {
     String[] head = arr[0];
     V = Integer.parseInt(head[0]);
     E = Integer.parseInt(head[1]);
@@ -51,7 +51,7 @@ public class AdjTreeSet {
     }
   }
 
-  private void validateVertex(int v) {
+  public void validateVertex(int v) {
     if (v < 0 || v >= V) {
       throw new IllegalArgumentException("vertex " + v + "is invalid");
     }
