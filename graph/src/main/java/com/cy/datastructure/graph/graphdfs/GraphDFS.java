@@ -30,7 +30,7 @@ public class GraphDFS {
     for (int v = 0; v < G.getV(); v ++) {
       if (!visited[v]) {
         dfs(v);
-        count++;
+        count ++;
       }
     }
   }
