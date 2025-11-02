@@ -1,6 +1,7 @@
-package com.cy.datastructure.graph.cyclecheck;
+package com.cy.datastructure.graph.graphdfs.cyclecheck;
 
 import com.cy.datastructure.graph.adjlist.Graph;
+import com.cy.datastructure.graph.graphdfs.cyclecheck.CycleCheckGraph;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

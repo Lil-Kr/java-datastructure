@@ -1,4 +1,4 @@
-package com.cy.datastructure.graph.path;
+package com.cy.datastructure.graph.graphdfs.path;
 
 import com.cy.datastructure.graph.adjlist.Graph;
 
@@ -11,27 +11,31 @@ import java.util.List;
  * @Author: Lil-K
  * @Date: 2025/10/31
  * @Description:
- * 求单源路径: 固定源头
+ * 找到目标顶点后, 提前结束递归
  */
-public class SingleSourcePath {
+public class Path {
+
   private Graph G;
 
   private boolean[] visited;
 
   private int s;
+  private int t;
 
   private int[] pre;
 
-  public SingleSourcePath(Graph graph, int source) {
+  public Path(Graph graph, int source, int target) {
     this.G = graph;
 
     graph.validateVertex(source);
+    graph.validateVertex(target);
     this.s = source;
+    this.t = target;
 
+    visited = new boolean[G.getV()];
     this.pre = new int[G.getV()];
     Arrays.fill(pre, -1);
 
-    visited = new boolean[G.getV()];
     dfs(source, source);
   }
 
@@ -39,33 +43,34 @@ public class SingleSourcePath {
    * prev order
    * @param v
    */
-  private void dfs(int v, int parent) {
+  private boolean dfs(int v, int parent) {
     visited[v] = true;
     pre[v] = parent;
+    // 找到目标后, 提前终止递归
+    if (v == t) return true;
+
     for (int w : G.adj(v)) {
       if (visited[w]) continue;
-      dfs(w, v);
+      if (dfs(w, v)) return true;
     }
+    return false;
   }
 
   /**
    * 目标 t 对于 源头 s, 是否可达?
-   * @param t
    * @return
    */
-  public boolean isConnectedTo(int t) {
-    G.validateVertex(t);
+  public boolean isConnectedTo() {
     return visited[t];
   }
 
   /**
    * 从 t 到 源头 s 的全路径
-   * @param t
    * @return
    */
-  public List<Integer> path(int t) {
+  public List<Integer> path() {
     List<Integer> res = new ArrayList<>();
-    if (!isConnectedTo(t)) {
+    if (!isConnectedTo()) {
       return res;
     }
 

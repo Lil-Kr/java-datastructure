@@ -1,4 +1,4 @@
-package com.cy.datastructure.graph.bipartitioncheck;
+package com.cy.datastructure.graph.graphdfs.bipartitioncheck;
 
 import com.cy.datastructure.graph.adjlist.Graph;
 import org.junit.jupiter.api.Assertions;

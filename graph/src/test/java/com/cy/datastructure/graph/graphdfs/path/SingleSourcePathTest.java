@@ -1,8 +1,8 @@
-package com.cy.datastructure.graph.path;
+package com.cy.datastructure.graph.graphdfs.path;
 
 import com.alibaba.fastjson2.JSONArray;
 import com.cy.datastructure.graph.adjlist.Graph;
-import com.cy.datastructure.graph.path.SingleSourcePath;
+import com.cy.datastructure.graph.graphdfs.path.SingleSourcePath;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

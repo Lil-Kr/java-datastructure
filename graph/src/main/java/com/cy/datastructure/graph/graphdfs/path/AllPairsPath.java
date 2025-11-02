@@ -1,4 +1,4 @@
-package com.cy.datastructure.graph.path;
+package com.cy.datastructure.graph.graphdfs.path;
 
 import com.cy.datastructure.graph.adjlist.Graph;
 
@@ -17,7 +17,6 @@ public class AllPairsPath {
 
   // 在构造函数中，只需要传入图 G 就好了，不需要指定任何“源”
   public AllPairsPath(Graph G){
-
     this.G = G;
 
     // 初始化 paths 数组
@@ -31,7 +30,7 @@ public class AllPairsPath {
   }
 
   // 看从顶点 s 到顶点 t 是否有路径？
-  public boolean isConnectedTo(int s, int t){
+  public boolean isConnected(int s, int t){
     // 直接复用 SingleSourcePath 中的 isConnectedTo 方法
     // 我们只需要验证 s 的合法性即可；
     // 因为 t 的合法性在 isConnectedTo 中会验证
