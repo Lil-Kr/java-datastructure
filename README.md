@@ -21,6 +21,10 @@ English | [简体中文](./README.zh.md)
 
 ```plaintext
 .
+├── common/
+│   └── src/
+│       └── main/
+│           └── java/com/cy/datastructure/common/
 ├── array/
 │   └── src/
 │       └── main/
@@ -33,10 +37,6 @@ English | [简体中文](./README.zh.md)
 │   └── src/
 │       └── main/
 │           └── java/com/cy/datastructure/datastructure/bst/
-├── common/
-│   └── src/
-│       └── main/
-│           └── java/com/cy/datastructure/common/
 ├── hashtable/
 │   └── src/
 │       └── main/
@@ -68,9 +68,17 @@ English | [简体中文](./README.zh.md)
 │       └── main/
 │           └── java/com/cy/datastructure/stackandqueue/
 └── trie/
-    └── src/
-        └── main/
-            └── java/com/cy/datastructure/trie/
+│   └── src/
+│       └── main/
+│           └── java/com/cy/datastructure/trie/
+└── union-find/
+│   └── src/
+│       └── main/
+│           └── java/com/cy/datastructure/unionfind/
+├── graph/
+   └── src/
+       └── main/
+           └── java/com/cy/datastructure/graph/
 ```
 
 > Test cases are written for each structure

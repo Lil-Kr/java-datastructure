@@ -31,6 +31,7 @@
 		<module>red-black-tree</module>
 		<module>b-tree</module>
 		<module>graph</module>
+		<module>union-find</module>
 	</modules>
 
 	<properties>
